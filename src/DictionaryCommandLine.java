@@ -10,4 +10,9 @@ public class DictionaryCommandLine {
             dic.newWord[i].print();
         }
     }
+
+    public void dictionaryBasic(Dictionary dic, DictionaryManagement dicM) {
+        dicM.insertFromCommandline(dic);
+        showAllWords(dic, dicM);
+    }
 }
