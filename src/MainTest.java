@@ -12,8 +12,10 @@ public class MainTest {
         Dictionary dic = new Dictionary();
         DictionaryManagement dicM = new DictionaryManagement();
         dicM.insertFromCommandline(dic);
+        //dic.newWord[0].print();
         DictionaryCommandLine dicCmd = new DictionaryCommandLine();
         //showAllWords ở trong dicCmd nên gọi nó ra để in
-        dicCmd.showAllWords(dic);
+        dicCmd.showAllWords(dic, dicM);
+
     }
 }

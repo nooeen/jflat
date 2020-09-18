@@ -14,15 +14,17 @@ public class DictionaryManagement {
         Scanner sc = new Scanner(System.in);
         size = sc.nextInt();
         sc.nextLine();
-        for(int i = 0;i < size;i++) {
+        for (int i = 0; i < size; i++) {
             english = sc.nextLine();
             vietnamese = sc.nextLine();
             //ném từ vào mảng newWord
             dic.newWord[i] = new Word(english, vietnamese);
+            //dic.newWord[i].print();
         }
     }
 
     //do Dictionary Commnadline cần dùng cái size nên t cho getSize vào
+
     public int getSize() {
         return size;
     }

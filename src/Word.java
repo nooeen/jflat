@@ -4,7 +4,7 @@ import java.util.*;
 public class Word {
     //khỏi tạo 2 string wordTarget và wordExplain
     private String wordTarget;
-    private  String wordExplain;
+    private String wordExplain;
 
     //getter và setter
     public String getWordTarget() {
