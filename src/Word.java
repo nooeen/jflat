@@ -1,22 +1,17 @@
-import java.io.*;
-import java.util.*;
-
 public class Word {
-    //khỏi tạo 2 string wordTarget và wordExplain
     private String wordTarget;
     private String wordExplain;
 
-    //getter và setter
     public String getWordTarget() {
         return wordTarget;
     }
 
-    public void setWordTarget(String wordTarget) {
-        this.wordTarget = wordTarget;
-    }
-
     public String getWordExplain() {
         return wordExplain;
+    }
+
+    public void setWordTarget(String wordTarget) {
+        this.wordTarget = wordTarget;
     }
 
     public void setWordExplain(String wordExplain) {
@@ -33,7 +28,6 @@ public class Word {
         wordExplain = "";
     }
 
-    //in ra
     void print() {
         System.out.println("|     " + wordTarget + "     | " + wordExplain);
     }

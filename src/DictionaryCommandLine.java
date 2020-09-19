@@ -1,18 +1,24 @@
-import java.io.*;
-import java.util.*;
-
 public class DictionaryCommandLine {
-    public void showAllWords(Dictionary dic, DictionaryManagement dicM) {
-        //in ra số thứ tự, từ tiếng anh và tiếng việt
+    /**
+     * print the words's order, english writing & vietnamese writing.
+     * @param dict the dictionary's object
+     * @param dictMgmt the dictionary management's object
+     */
+    public void showAllWords(Dictionary dict, DictionaryManagement dictMgmt) {
         System.out.println("No | English | Vietnamese");
-        for (int i = 0; i < dicM.getSize(); i++) {
+        for (int i = 0; i < dictMgmt.getSize(); i++) {
             System.out.print(i + 1);
-            dic.newWord[i].print();
+            dict.newWord[i].print();
         }
     }
 
-    public void dictionaryBasic(Dictionary dic, DictionaryManagement dicM) {
-        dicM.insertFromCommandline(dic);
-        showAllWords(dic, dicM);
+    /**
+     * execute JFlat's basic operations.
+     * @param dict
+     * @param dictMgmt
+     */
+    public void dictionaryBasic(Dictionary dict, DictionaryManagement dictMgmt) {
+        dictMgmt.insertFromCommandline(dict);
+        showAllWords(dict, dictMgmt);
     }
 }
