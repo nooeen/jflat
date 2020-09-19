@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a2aa2686-b403-4da7-b6af-6f9b7df590c3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DictionaryCommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryCommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DictionaryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JFlat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JFlat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +61,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="JFlat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -94,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600532001972</updated>
-      <workItem from="1600532004842" duration="2802000" />
+      <workItem from="1600532004842" duration="6467000" />
     </task>
     <servers />
   </component>
@@ -113,29 +121,35 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="448" y="133" key="#Project_Structure" timestamp="1600532034546">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="448" y="112" key="#Project_Structure" timestamp="1600535342358">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="448" y="112" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1600535342358" />
     <state x="448" y="133" key="#Project_Structure/0.23.1920.1057@0.23.1920.1057" timestamp="1600532034546" />
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1600535061281">
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1600539256005">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600535061281" />
-    <state width="1878" height="290" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1600532051192" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1600535061280">
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256005" />
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845414" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1600539256004">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600535061280" />
-    <state width="1878" height="290" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1600532051191" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1600535061279">
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256004" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845413" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1600539256003">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600535061279" />
-    <state width="1878" height="290" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1600532051191" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1600535061280">
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256003" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845413" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1600539256004">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600535061280" />
-    <state width="1878" height="290" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1600532051191" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256004" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845414" />
+    <state x="625" y="219" key="run.anything.popup" timestamp="1600536739432">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="625" y="219" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600536739432" />
+    <state x="625" y="237" key="run.anything.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1600535283825" />
   </component>
 </project>

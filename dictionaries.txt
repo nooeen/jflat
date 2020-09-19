@@ -1,0 +1,4 @@
+hello	xin chao
+thank you	cam on
+what	gi co
+test	test1
