@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bigProject.iml" filepath="$PROJECT_DIR$/bigProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JFlat.iml" filepath="$PROJECT_DIR$/JFlat.iml" />
     </modules>
   </component>
 </project>
