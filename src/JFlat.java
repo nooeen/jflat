@@ -7,6 +7,7 @@ public class JFlat {
         Dictionary dict = new Dictionary();
         DictionaryManagement dictMgmt = new DictionaryManagement();
         DictionaryCommandLine dictCli = new DictionaryCommandLine();
+
         dictCli.dictionaryBasic(dict, dictMgmt);
     }
 }

@@ -1,3 +1,5 @@
+import java.util.LinkedHashMap;
+
 public class Dictionary {
-    Word[] newWord = new Word[1000];
+    LinkedHashMap<String, String> wordsList = new LinkedHashMap<String, String>();
 }
