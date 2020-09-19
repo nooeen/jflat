@@ -9,6 +9,7 @@ public class DictionaryManagement {
 
     /**
      * insert word into the dictionary from cli.
+     *
      * @param dict the dictionary's object
      */
     public void insertFromCommandLine(Dictionary dict) {
@@ -20,12 +21,13 @@ public class DictionaryManagement {
 
     /**
      * insert word into the dictionary from file.
+     *
      * @param dict the dictionary's object
      */
     public void insertFromFile(Dictionary dict) throws FileNotFoundException {
         File inputFile = new File("dictionaries.txt");
         Scanner input = new Scanner(inputFile);
-        while(input.hasNext()) {
+        while (input.hasNext()) {
             String in = input.nextLine();
             String[] split = in.split("\t");
             english = split[0];

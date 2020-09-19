@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a2aa2686-b403-4da7-b6af-6f9b7df590c3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DictionaryCommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryCommandLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DictionaryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JFlat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JFlat.java" afterDir="false" />
@@ -102,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600532001972</updated>
-      <workItem from="1600532004842" duration="6467000" />
+      <workItem from="1600532004842" duration="6924000" />
     </task>
     <servers />
   </component>

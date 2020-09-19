@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 public class JFlat {
     /**
      * the main program.
+     *
      * @param args default args
      */
     public static void main(String[] args) throws FileNotFoundException {

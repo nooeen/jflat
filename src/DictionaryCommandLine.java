@@ -19,13 +19,18 @@ public class DictionaryCommandLine {
         }
     }
 
+    /**
+     * lookup a word from its english or vietnamese meaning.
+     *
+     * @param dict the dictionary's object
+     */
     public void dictionaryLookup(Dictionary dict) {
         Scanner input = new Scanner(System.in);
         String lookupWord = input.nextLine();
         String result = dict.wordsList.get(lookupWord);
-        if(result==null) {
-            for(String o : dict.wordsList.keySet()) {
-                if(dict.wordsList.get(o).equals(lookupWord)) {
+        if (result == null) {
+            for (String o : dict.wordsList.keySet()) {
+                if (dict.wordsList.get(o).equals(lookupWord)) {
                     result = o;
                 }
             }
@@ -35,6 +40,7 @@ public class DictionaryCommandLine {
 
     /**
      * execute JFlat's basic operations.
+     *
      * @param dict     the dictionary's object
      * @param dictMgmt dictionary management's object
      */
@@ -47,6 +53,13 @@ public class DictionaryCommandLine {
         showAllWords(dict);
     }
 
+    /**
+     * execute JFlat's advanced operations.
+     *
+     * @param dict     the dictionary's object
+     * @param dictMgmt dictionary management's object
+     * @throws FileNotFoundException
+     */
     public void dictionaryAdvanced(Dictionary dict, DictionaryManagement dictMgmt) throws FileNotFoundException {
         dictMgmt.insertFromFile(dict);
         showAllWords(dict);
