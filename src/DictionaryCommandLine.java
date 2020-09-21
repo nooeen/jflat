@@ -10,12 +10,12 @@ public class DictionaryCommandLine {
      */
     public void showAllWords(Dictionary dict) {
         int i = 0;
-        System.out.printf("%-12s%-12s%s\n", "No.", "English", "Vietnamese");
+        System.out.printf("%-8s%-12s%s\n", "No", "| English", "| Vietnamese");
         for (Entry<String, String> entry : dict.wordsList.entrySet()) {
             i++;
             String key = entry.getKey();
             String value = entry.getValue();
-            System.out.printf("%-12s%-12s%s\n", i, key, value);
+            System.out.printf("%-8s%-12s%s\n", i, "| "+key, "| "+value);
         }
     }
 

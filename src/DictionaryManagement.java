@@ -35,4 +35,13 @@ public class DictionaryManagement {
             dict.wordsList.put(english, vietnamese);
         }
     }
+
+    /**
+     * find word(s) that contain "word" string.
+     * @param dict the dictionary's object
+     * @param word word to find
+     */
+    public void dictionarySearcher(Dictionary dict, String word) {
+        
+    }
 }
