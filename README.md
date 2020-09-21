@@ -7,7 +7,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
 
   <h3 align="center">JFlat</h3>
 
