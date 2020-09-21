@@ -1,5 +1,5 @@
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 public class Dictionary {
-    LinkedHashMap<String, String> wordsList = new LinkedHashMap<String, String>();
+    TreeMap<String, String> wordsList = new TreeMap<String, String>();
 }
