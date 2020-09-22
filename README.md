@@ -2,7 +2,7 @@
 <br />
 <p align="center">
 
-  <h2 align="center">JFlat</h2>
+  <h3 align="center">JFlat</h3>
 
   <p align="center">
     Your go-to dictionary, written from scracth with Java!
