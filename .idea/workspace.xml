@@ -21,6 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a2aa2686-b403-4da7-b6af-6f9b7df590c3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFlat/DictionaryCommandLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFlat/DictionaryCommandLine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFlat/DictionaryManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFlat/DictionaryManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFlat/JFlat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DictionaryCommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryCommandLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DictionaryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DictionaryManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JFlat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JFlat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +79,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.JFlat" />
@@ -89,7 +106,7 @@
       <updated>1600532001972</updated>
       <workItem from="1600532004842" duration="11813000" />
       <workItem from="1600654038185" duration="1210000" />
-      <workItem from="1600689236099" duration="336000" />
+      <workItem from="1600689236099" duration="3195000" />
     </task>
     <servers />
   </component>
@@ -114,32 +131,32 @@
     </state>
     <state x="448" y="112" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1600535342358" />
     <state x="448" y="133" key="#Project_Structure/0.23.1920.1057@0.23.1920.1057" timestamp="1600532034546" />
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1600647599789">
+    <state width="1878" height="343" key="GridCell.Tab.0.bottom" timestamp="1600744321503">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256005" />
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1600647599789" />
+    <state width="1878" height="343" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1600744321503" />
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845414" />
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1920.1177@0.23.1920.1177" timestamp="1600605553647" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1600647599785">
+    <state width="1878" height="343" key="GridCell.Tab.0.center" timestamp="1600744321502">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256004" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1600647599785" />
+    <state width="1878" height="343" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1600744321502" />
     <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845413" />
     <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1920.1177@0.23.1920.1177" timestamp="1600605553646" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1600647599782">
+    <state width="1878" height="343" key="GridCell.Tab.0.left" timestamp="1600744321502">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256003" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1600647599782" />
+    <state width="1878" height="343" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1600744321502" />
     <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845413" />
     <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1920.1177@0.23.1920.1177" timestamp="1600605553645" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1600647599787">
+    <state width="1878" height="343" key="GridCell.Tab.0.right" timestamp="1600744321503">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600539256004" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1600647599787" />
+    <state width="1878" height="343" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1600744321503" />
     <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1600537845414" />
     <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1920.1177@0.23.1920.1177" timestamp="1600605553646" />
     <state x="559" y="222" key="new project wizard" timestamp="1600654071013">

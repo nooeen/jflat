@@ -15,7 +15,7 @@ public class DictionaryCommandLine {
             i++;
             String key = entry.getKey();
             String value = entry.getValue();
-            System.out.printf("%-8s%-12s%s\n", i, "| "+key, "| "+value);
+            System.out.printf("%-8s%-12s%s\n", i, "| " + key, "| " + value);
         }
     }
 
@@ -63,6 +63,6 @@ public class DictionaryCommandLine {
     public void dictionaryAdvanced(Dictionary dict, DictionaryManagement dictMgmt) throws FileNotFoundException {
         dictMgmt.insertFromFile(dict);
         showAllWords(dict);
-        dictionaryLookup(dict);
+        //dictionaryLookup(dict);
     }
 }

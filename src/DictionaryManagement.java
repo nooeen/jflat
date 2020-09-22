@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -37,11 +39,52 @@ public class DictionaryManagement {
     }
 
     /**
+     * modify value's key in treemap.
+     *
+     * @param dict  the dictionary's database
+     * @param value key's value
+     */
+    public void modifyKey(Dictionary dict, String value, String curKey, String newKey) {
+        dict.wordsList.remove(curKey);
+        dict.wordsList.put(newKey, value);
+    }
+
+    /**
+     * modify key's value in treemap.
+     *
+     * @param dict     the dictionary's database
+     * @param key      value's key
+     * @param newValue key's new value
+     */
+    public void modifyValue(Dictionary dict, String key, String newValue) {
+        dict.wordsList.replace(key, newValue);
+    }
+
+    /**
      * find word(s) that contain "word" string.
+     *
      * @param dict the dictionary's object
      * @param word word to find
      */
     public void dictionarySearcher(Dictionary dict, String word) {
-        
+
+    }
+
+    /**
+     * export the dictionary's database to a file.
+     *
+     * @param dict the dictionary's database
+     */
+    public void dictionnaryExportToFile(Dictionary dict) throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter("export.txt");
+        int i = 0;
+        for (Map.Entry<String, String> entry : dict.wordsList.entrySet()) {
+            i++;
+            String key = entry.getKey();
+            String value = entry.getValue();
+            pw.printf("%-12s%-12s\n", key, value);
+        }
+        pw.flush();
+        pw.close();
     }
 }

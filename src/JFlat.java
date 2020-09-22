@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 
 public class JFlat {
     /**
@@ -13,5 +14,6 @@ public class JFlat {
 
         //dictCli.dictionaryBasic(dict, dictMgmt);
         dictCli.dictionaryAdvanced(dict, dictMgmt);
+        dictMgmt.dictionnaryExportToFile(dict);
     }
 }
