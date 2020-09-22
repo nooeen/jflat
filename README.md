@@ -14,7 +14,7 @@
 
 JFlat was inspired from TFlat, a well-known dictionary app for translating words from English to Vietnamese and vice-verse. JFlat is an attempt to recreate that app using Java and its libraries.
 
-### Built With
+## Built With
 
 * [Java](https://www.java.com/en/)
 * [JavaFX](https://openjfx.io)
