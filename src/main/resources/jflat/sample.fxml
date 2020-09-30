@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #588041;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="1.0000057220458984" prefWidth="53.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.9999942779541" minWidth="10.0" prefWidth="157.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="496.99999237060547" minWidth="10.0" prefWidth="389.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="128.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="359.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="28.0" minHeight="0.0" prefHeight="12.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button mnemonicParsing="false" style="-fx-background-color: #588041;" textFill="#588041">
+         <graphic>
+            <Icon content="SETTINGS" style="-fx-background-color: #588041;" />
+         </graphic>
+      </Button>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="JFLAT">
+               <font>
+                  <Font size="39.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="190.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </VBox>
+      <VBox prefHeight="343.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <AutoCompleteTextField prefHeight="0.0" VBox.vgrow="NEVER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </AutoCompleteTextField>
+         </children>
+      </VBox>
+      <Icon content="SEARCH" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-300.0" />
+         </GridPane.margin>
+      </Icon>
+      <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #588041;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <tabs>
+          <Tab style="-fx-background-color: #588041;" text="Tiếng Việt">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #588041;">
+                     <children>
+                        <Icon content="SPEAKER" layoutX="367.0" layoutY="1.0" />
+                        <TextArea layoutX="-6.0" prefHeight="275.0" prefWidth="378.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab style="-fx-background-color: #588041;" text="Tiếng Anh">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #588041;">
+                     <children>
+                        <Icon content="SPEAKER" layoutX="367.0" layoutY="1.0" />
+                        <TextArea layoutX="-6.0" prefHeight="275.0" prefWidth="376.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+   <cursor>
+      <Cursor fx:constant="CLOSED_HAND" />
+   </cursor>
+</GridPane>
