@@ -1,3 +1,5 @@
+package jflat;
+
 import java.io.FileNotFoundException;
 import java.util.Map.Entry;
 import java.util.Scanner;

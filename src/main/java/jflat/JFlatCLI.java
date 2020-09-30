@@ -1,6 +1,8 @@
+package jflat;
+
 import java.io.FileNotFoundException;
 
-public class JFlat {
+public class JFlatCLI {
     /**
      * the main program.
      *
