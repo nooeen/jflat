@@ -10,9 +10,9 @@ public class JFlatGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("jflat.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JFlat.fxml"));
         primaryStage.setTitle("JFlat");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
     }
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #ff4500;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.Controller">
+   <children>
+      <Label text="JFlat" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold Italic" size="37.0" />
+         </font></Label>
+      <Region prefHeight="79.0" prefWidth="300.0" />
+      <Label text="Favorite Words" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <ListView fx:id="FavoriteWord" editable="true" fixedCellSize="10.0" onEditCancel="#HomeButton" onEditCommit="#HomeButton" onEditStart="#HomeButton" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #ff4500;" />
+   </children>
+</VBox>

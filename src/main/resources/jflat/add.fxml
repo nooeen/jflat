@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.Controller">
+   <children>
+      <VBox alignment="CENTER" prefHeight="121.0" prefWidth="294.0" spacing="7.0" style="-fx-background-color: #ff4500;">
+         <children>
+            <Label text="JFlat" textFill="#f8f8f8">
+               <font>
+                  <Font name="Arial Bold Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label text="New word" textFill="#e8e8e8">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="300.0" spacing="21.0" style="-fx-background-color: #ff4500;">
+         <children>
+            <TextField alignment="CENTER" promptText="New Word" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ff4500;">
+         <children>
+            <TextField alignment="CENTER" promptText="Meaning" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ff4500;">
+         <children>
+            <Button mnemonicParsing="false" onAction="#DoneButton" style="-fx-background-color: #ff4500;">
+               <graphic>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="46.0" text="Done" textFill="#f8f8f8">
+                     <font>
+                        <Font name="Arial Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

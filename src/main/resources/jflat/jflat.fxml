@@ -1,8 +1,154 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="jflat.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="186.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="514.0" minWidth="10.0" prefWidth="514.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;">
+         <children>
+            <Label alignment="CENTER" prefHeight="49.0" prefWidth="218.0" text="JFlat" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="33.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;">
+               <children>
+                  <Button minWidth="45.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="33.0" prefWidth="61.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;" text="Home" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icon/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button minWidth="33.0" mnemonicParsing="false" onAction="#FavoriteListButton" prefHeight="33.0" prefWidth="61.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;" text="Favorite" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icon/star.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button minWidth="49.0" mnemonicParsing="false" onAction="#addButton" onDragDetected="#addButton" onDragDone="#addButton" onDragDropped="#addButton" prefHeight="33.0" prefWidth="61.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;" text="Add" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icon/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="186.0" spacing="6.0">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Icon/search.png" />
+                     </image>
+                  </ImageView>
+                  <AutoCompleteTextField fx:id="searchWord" onKeyPressed="#EnterButton" onKeyReleased="#EnterButton" prefHeight="38.0" prefWidth="134.0" promptText="Enter Text" style="-fx-background-color: #ff4500;" />
+               </children>
+               <padding>
+                  <Insets left="4.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="377.0" minHeight="10.0" prefHeight="377.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane style="-fx-background-color: #ff4500#ff4500;">
+              <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ff4500#ff4500;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <Button minWidth="50.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #ff4500#ff4500;" text="US" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Icon/Say.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: #ff4500#ff4500;" text="UK" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Icon/Say.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                     </children>
+                  </HBox>
+                  <VBox style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500 #ff4500#ff4500;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="word" alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="139.0" text="Extragagant" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="3.0" left="4.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500;" GridPane.columnIndex="2">
+                     <children>
+                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="47.0" style="-fx-background-color: #ff4500#ff4500 #ff4500#ff4500;" text="Favorite" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Icon/favorite.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </GridPane>
+            <TextArea fx:id="translation" prefHeight="200.0" prefWidth="200.0" text="Đắt" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </TextArea>
+         </children>
+      </GridPane>
+   </children>
 </GridPane>
