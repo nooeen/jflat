@@ -12,11 +12,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class GCloudTTS {
-    public void mp3(String lang, String sentence) throws Exception{
+    public void mp3(String lang, String text) throws Exception{
         // Instantiates a client
         try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
             // Set the text input to be synthesized
-            SynthesisInput input = SynthesisInput.newBuilder().setText(sentence).build();
+            SynthesisInput input = SynthesisInput.newBuilder().setText(text).build();
 
             // Build the voice request, select the language code and the ssml voice gender
             VoiceSelectionParams voice = null;

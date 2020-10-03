@@ -1,39 +1,45 @@
 package jflat;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Database {
     /**
-     * Connect to a sample database
+     * connect to the dictionary's database
+     * @return the Connection object
      */
-    public static void connect() {
+    private Connection connect() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:dictDB.db";
         Connection conn = null;
         try {
-            // db parameters
-            String url = "jdbc:sqlite:EN-VN.db";
-            // create a connection to the database
             conn = DriverManager.getConnection(url);
-
-            System.out.println("Connection to SQLite has been established.");
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
+        return conn;
     }
+
     /**
-     * @param args the command line arguments
+     * list all words from a table
+     * @param table either "va" or "av"
      */
-    public static void main(String[] args) {
-        connect();
+    public void listAll(String table){
+        String sql = "SELECT word FROM " + table;
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

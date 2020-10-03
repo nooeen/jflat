@@ -1,7 +1,5 @@
 package jflat;
 
-import java.io.FileNotFoundException;
-
 public class JFlatCLI {
     /**
      * the main program.
@@ -13,10 +11,14 @@ public class JFlatCLI {
         DictionaryManagement dictMgmt = new DictionaryManagement();
         DictionaryCommandLine dictCli = new DictionaryCommandLine();
         GCloudTTS tts = new GCloudTTS();
+        GCloudTranslator translator = new GCloudTranslator();
+        Database dictDB = new Database();
 
         //dictCli.dictionaryBasic(dict, dictMgmt);
         //dictCli.dictionaryAdvanced(dict, dictMgmt);
         //dictMgmt.dictionnaryExportToFile(dict);
-        tts.mp3("vi-VN", "Em so đẹp");
+        //tts.mp3("vi-VN", "Xin chào JFlat");
+        //translator.translateText("vi", "Hello");
+        //dictDB.listAll("av");
     }
 }
