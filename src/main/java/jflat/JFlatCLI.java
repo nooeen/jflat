@@ -17,6 +17,6 @@ public class JFlatCLI {
         //dictCli.dictionaryBasic(dict, dictMgmt);
         //dictCli.dictionaryAdvanced(dict, dictMgmt);
         //dictMgmt.dictionnaryExportToFile(dict);
-        tts.mp3("vi-VN", "Xin chào JFlat");
+        tts.mp3("vi-VN", "Em so đẹp");
     }
 }
