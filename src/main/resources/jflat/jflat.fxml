@@ -91,11 +91,11 @@
                         <ImageView fitHeight="20.0" fitWidth="27.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #ff4500;" text="Button">
+                  <Button contentDisplay="RIGHT" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#addButton" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #ff4500;" text="Button">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="37.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../Icon/download.png" />
+                              <Image url="@../Icon/download.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -176,11 +176,6 @@
                                 <Insets left="5.0" right="10.0" />
                             </padding>
                         </HBox>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <image>
-                        <Image url="@../../../Icon/Favorite1.png" />
-                     </image>
-                  </ImageView>
                     </children>
                 </GridPane>
             <TabPane fx:id="meaning" prefHeight="200.0" prefWidth="200.0" stylesheets="@tabpane.css" tabClosingPolicy="UNAVAILABLE" GridPane.rowIndex="1">

@@ -19,7 +19,6 @@
 .tab-pane .tab:selected {
     -fx-background-color: #d3d3d3;
     -fx-border-color: blue;
-    -fx-progress-color: #fffff;
     -fx-border-style: hidden;
 }
 
