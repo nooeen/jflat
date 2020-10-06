@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
-
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -45,25 +44,25 @@ public class Controller {
 
     }
 
-    @FXML
+
     public void addButton() throws Exception {
         //System.out.println(word.getText());
         Parent root = FXMLLoader.load(getClass().getResource("add.fxml"));
         addWindow.setTitle("addWord");
         addWindow.setScene(new Scene(root, 300, 200));
         addWindow.show();
+
     }
 
-    @FXML
+
     public void DoneButtonAddWord() {
         addWindow.close();
     }
-    @FXML
+
     public void DoneButtonFavoriteWord() {
         favoriteList.close();
     }
 
-    @FXML
     public void EnterButton(KeyEvent e) {
         if (e.getCode().toString().equals("ENTER")) {
             word.setText(searchWord.getText());
@@ -71,8 +70,6 @@ public class Controller {
         }
     }
 
-
-    @FXML
     public void FavoriteListButton() throws Exception {
         //FavoriteWord.getItems().addAll("home", "star", "drug");
         Parent root = FXMLLoader.load(getClass().getResource("Favorite.fxml"));
