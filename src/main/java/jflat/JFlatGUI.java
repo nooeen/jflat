@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class JFlatGUI extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("JFlat.fxml"));
         primaryStage.setTitle("JFlat");
         primaryStage.setScene(new Scene(root, 700, 500));
@@ -17,7 +17,6 @@ public class JFlatGUI extends Application {
     }
 
 
-    
     public static void main(String[] args) {
         launch(args);
     }

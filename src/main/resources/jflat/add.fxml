@@ -35,7 +35,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ff4500;">
          <children>
-            <Button mnemonicParsing="false" onAction="#DoneButton" style="-fx-background-color: #ff4500;">
+            <Button mnemonicParsing="false" onAction="#DoneButtonAddWord" style="-fx-background-color: #ff4500;">
                <graphic>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="46.0" text="Done" textFill="#f8f8f8">
                      <font>
