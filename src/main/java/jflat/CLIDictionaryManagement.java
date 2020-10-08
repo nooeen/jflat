@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Scanner;
 
-public class DictionaryManagement {
+public class CLIDictionaryManagement {
 
     private String english = "";
     private String vietnamese = "";
@@ -16,7 +16,7 @@ public class DictionaryManagement {
      *
      * @param dict the dictionary's object
      */
-    public void insertFromCommandLine(Dictionary dict) {
+    public void insertFromCommandLine(CLIDictionary dict) {
         Scanner input = new Scanner(System.in);
         english = input.nextLine();
         vietnamese = input.nextLine();
@@ -28,7 +28,7 @@ public class DictionaryManagement {
      *
      * @param dict the dictionary's object
      */
-    public void insertFromFile(Dictionary dict) throws FileNotFoundException {
+    public void insertFromFile(CLIDictionary dict) throws FileNotFoundException {
         File inputFile = new File("dictionaries.txt");
         Scanner input = new Scanner(inputFile);
         while (input.hasNext()) {
@@ -46,7 +46,7 @@ public class DictionaryManagement {
      * @param dict  the dictionary's database
      * @param value key's value
      */
-    public void modifyKey(Dictionary dict, String value, String curKey, String newKey) {
+    public void modifyKey(CLIDictionary dict, String value, String curKey, String newKey) {
         dict.wordsList.remove(curKey);
         dict.wordsList.put(newKey, value);
     }
@@ -58,7 +58,7 @@ public class DictionaryManagement {
      * @param key      value's key
      * @param newValue key's new value
      */
-    public void modifyValue(Dictionary dict, String key, String newValue) {
+    public void modifyValue(CLIDictionary dict, String key, String newValue) {
         dict.wordsList.replace(key, newValue);
     }
 
@@ -68,7 +68,7 @@ public class DictionaryManagement {
      * @param dict the dictionary's object
      * @param word word to find
      */
-    public void dictionarySearcher(Dictionary dict, String word) {
+    public void dictionarySearcher(CLIDictionary dict, String word) {
 
     }
 
@@ -77,7 +77,7 @@ public class DictionaryManagement {
      *
      * @param dict the dictionary's database
      */
-    public void dictionnaryExportToFile(Dictionary dict) throws FileNotFoundException {
+    public void dictionnaryExportToFile(CLIDictionary dict) throws FileNotFoundException {
         PrintWriter pw = new PrintWriter("export.txt");
         int i = 0;
         for (Map.Entry<String, String> entry : dict.wordsList.entrySet()) {

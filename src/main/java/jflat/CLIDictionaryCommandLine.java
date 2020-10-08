@@ -4,13 +4,13 @@ import java.io.FileNotFoundException;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-public class DictionaryCommandLine {
+public class CLIDictionaryCommandLine {
     /**
      * print the words's order, english writing & vietnamese writing.
      *
      * @param dict the dictionary's object
      */
-    public void showAllWords(Dictionary dict) {
+    public void showAllWords(CLIDictionary dict) {
         int i = 0;
         System.out.printf("%-8s%-12s%s\n", "No", "| English", "| Vietnamese");
         for (Entry<String, String> entry : dict.wordsList.entrySet()) {
@@ -26,7 +26,7 @@ public class DictionaryCommandLine {
      *
      * @param dict the dictionary's object
      */
-    public void dictionaryLookup(Dictionary dict) {
+    public void dictionaryLookup(CLIDictionary dict) {
         Scanner input = new Scanner(System.in);
         String lookupWord = input.nextLine();
         String result = dict.wordsList.get(lookupWord);
@@ -46,7 +46,7 @@ public class DictionaryCommandLine {
      * @param dict     the dictionary's object
      * @param dictMgmt dictionary management's object
      */
-    public void dictionaryBasic(Dictionary dict, DictionaryManagement dictMgmt) {
+    public void dictionaryBasic(CLIDictionary dict, CLIDictionaryManagement dictMgmt) {
         Scanner input = new Scanner(System.in);
         int wordsNum = input.nextInt();
         for (int i = 0; i < wordsNum; i++) {
@@ -62,7 +62,7 @@ public class DictionaryCommandLine {
      * @param dictMgmt dictionary management's object
      * @throws FileNotFoundException
      */
-    public void dictionaryAdvanced(Dictionary dict, DictionaryManagement dictMgmt) throws FileNotFoundException {
+    public void dictionaryAdvanced(CLIDictionary dict, CLIDictionaryManagement dictMgmt) throws FileNotFoundException {
         dictMgmt.insertFromFile(dict);
         showAllWords(dict);
         //dictionaryLookup(dict);

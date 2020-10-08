@@ -9,12 +9,13 @@ public class Trie {
         trie.insert("apple");
         System.out.println(trie.search("apple"));   // returns true
         System.out.println(trie.search("app"));     // returns false
-        System.out.println(trie.startsWith("app")); // returns true
+        System.out.println(trie.startsWith("a")); // returns true
         trie.insert("app");
         System.out.println(trie.search("app"));     // returns true
         System.out.println(trie.findWords("ap")); // [app, apple]
         trie.insert("atom");
         System.out.println(trie.findWords("a")); // [app, apple, atom]
+        System.out.println(trie.search(" ")); // [app, apple, atom]
 
     }
 
