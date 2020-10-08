@@ -1,0 +1,12 @@
+.tab {
+
+    -fx-pref-width: 50;
+    -fx-pref-height: 50
+}
+.tab-header-background {
+    -fx-background-color:transparent
+}
+
+.tab-pane{
+    -fx-padding: 10 10 10 0
+}
