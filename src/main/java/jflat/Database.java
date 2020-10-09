@@ -14,6 +14,7 @@ import java.sql.Statement;
 public class Database {
     /**
      * connect to the dictionary's database
+     *
      * @return the Connection object
      */
     private Connection connect() {
@@ -33,8 +34,8 @@ public class Database {
         String sql = "SELECT word FROM " + "av";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while (rs.next()) {
                 words.add(rs.getString("word"));
@@ -49,8 +50,8 @@ public class Database {
         String sql = "SELECT word FROM " + "va";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while (rs.next()) {
                 words.add(rs.getString("word"));
@@ -64,8 +65,8 @@ public class Database {
         String def = "";
         String sql = "SELECT html FROM av WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while (rs.next()) {
                 def = rs.getString("html");
@@ -78,10 +79,10 @@ public class Database {
 
     public String getVieDef(String selectedWord) {
         String def = "";
-        String sql = "SELECT html FROM va WHERE word LIKE " + "'" + selectedWord +"'";
+        String sql = "SELECT html FROM va WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while (rs.next()) {
                 def = rs.getString("html");
@@ -90,5 +91,21 @@ public class Database {
             System.out.println(e.getMessage());
         }
         return def;
+    }
+
+    public void addEngWord() {
+
+    }
+
+    public void addVieWord() {
+
+    }
+
+    public void deleteEngWord(String selectedWord) {
+
+    }
+
+    public void deleteVieWord(String selectedWord) {
+
     }
 }
