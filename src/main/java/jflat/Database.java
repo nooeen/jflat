@@ -29,7 +29,7 @@ public class Database {
     }
 
     public void listAV(ObservableList<String> words) {
-        words.removeAll();
+        words.clear();
         String sql = "SELECT word FROM " + "av";
 
         try (Connection conn = this.connect();
@@ -45,7 +45,7 @@ public class Database {
     }
 
     public void listVA(ObservableList<String> words) {
-        words.removeAll();
+        words.clear();
         String sql = "SELECT word FROM " + "va";
 
         try (Connection conn = this.connect();
@@ -77,6 +77,18 @@ public class Database {
     }
 
     public String getVieDef(String selectedWord) {
-        return null;
+        String def = "";
+        String sql = "SELECT html FROM va WHERE word LIKE " + "'" + selectedWord +"'";
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            // loop through the result set
+            while (rs.next()) {
+                def = rs.getString("html");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return def;
     }
 }

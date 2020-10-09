@@ -18,6 +18,7 @@ public class JFlatController implements Initializable{
 
     public Database dictDB = new Database();
     public ObservableList<String> words = FXCollections.observableArrayList();
+    public boolean isAV = true;
 
     @FXML public ListView<String> wordsList;
     @FXML public WebView defView;
@@ -36,7 +37,25 @@ public class JFlatController implements Initializable{
         sb.deleteCharAt(0);
         sb.deleteCharAt(sb.length()-1);
         selectedWord = sb.toString();
-        defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
+        if(isAV==true) {
+            defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
+        } else {
+            defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
+        }
+    }
+
+    @FXML public void switchDict() {
+        if(isAV == true) {
+            switchBTN.setText("English - Vietnamese");
+            dictDB.listVA(words);
+            wordsList.setItems(words);
+            isAV = false;
+        } else {
+            switchBTN.setText("Vietnamese - English");
+            dictDB.listAV(words);
+            wordsList.setItems(words);
+            isAV = true;
+        }
     }
 
     @Override
