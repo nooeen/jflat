@@ -1,15 +1,15 @@
 package jflat;
 
-public class JFlatCLI {
+public class CLIJFlat {
     /**
      * the main program.
      *
      * @param args default args
      */
     public static void main(String[] args) throws Exception {
-        Dictionary dict = new Dictionary();
-        DictionaryManagement dictMgmt = new DictionaryManagement();
-        DictionaryCommandLine dictCli = new DictionaryCommandLine();
+        CLIDictionary dict = new CLIDictionary();
+        CLIDictionaryManagement dictMgmt = new CLIDictionaryManagement();
+        CLIDictionaryCommandLine dictCli = new CLIDictionaryCommandLine();
         GCloudTTS tts = new GCloudTTS();
         GCloudTranslator translator = new GCloudTranslator();
         Database dictDB = new Database();

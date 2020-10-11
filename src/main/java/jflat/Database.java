@@ -1,5 +1,10 @@
 package jflat;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,6 +14,7 @@ import java.sql.Statement;
 public class Database {
     /**
      * connect to the dictionary's database
+     *
      * @return the Connection object
      */
     private Connection connect() {
@@ -23,23 +29,83 @@ public class Database {
         return conn;
     }
 
-    /**
-     * list all words from a table
-     * @param table either "va" or "av"
-     */
-    public void listAll(String table){
-        String sql = "SELECT word FROM " + table;
+    public void listAV(ObservableList<String> words) {
+        words.clear();
+        String sql = "SELECT word FROM " + "av";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getString("word"));
+                words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void listVA(ObservableList<String> words) {
+        words.clear();
+        String sql = "SELECT word FROM " + "va";
+
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                words.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public String getEngDef(String selectedWord) {
+        String def = "";
+        String sql = "SELECT html FROM av WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                def = rs.getString("html");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return def;
+    }
+
+    public String getVieDef(String selectedWord) {
+        String def = "";
+        String sql = "SELECT html FROM va WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                def = rs.getString("html");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return def;
+    }
+
+    public void addEngWord() {
+
+    }
+
+    public void addVieWord() {
+
+    }
+
+    public void deleteEngWord(String selectedWord) {
+
+    }
+
+    public void deleteVieWord(String selectedWord) {
+
     }
 }
