@@ -7,8 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebView;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +20,9 @@ import java.util.ResourceBundle;
 public class JFlatController implements Initializable {
 
     public Database dictDB = new Database();
+
+    public GCloudTTS tts = new GCloudTTS();
+
     public ObservableList<String> words = FXCollections.observableArrayList();
     public boolean isAV = true;
 
@@ -28,6 +34,12 @@ public class JFlatController implements Initializable {
     public TextField autoCompleteField;
     @FXML
     public Button switchBTN;
+    @FXML
+    public Button ttsBTN;
+    @FXML
+    public Button addWord;
+    @FXML
+    public Button delWord;
 
     @FXML
     public void initWordsList() {
@@ -65,11 +77,49 @@ public class JFlatController implements Initializable {
     }
 
     @FXML
+    public void deleteWord() {
+        String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        if(isAV == true) {
+            dictDB.deleteEngWord(selectedWord);
+            dictDB.listAV(words);
+        } else {
+            dictDB.deleteVieWord(selectedWord);
+            dictDB.listVA(words);
+        }
+    }
+
+    @FXML
     public void autoCompleteListener() {
-        if(isAV==true) {
+        if (isAV == true) {
             dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
         } else {
             dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
+        }
+    }
+
+    @FXML
+    public void ttsPlay() throws Exception {
+        String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        if(isAV == true && selectedWord != "") {
+            tts.mp3("en-US", selectedWord);
+            Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(output);
+            mediaPlayer.seek(mediaPlayer.getStartTime());
+            mediaPlayer.play();
+        } else if(isAV == false && selectedWord != "") {
+            tts.mp3("vi-VN", selectedWord);
+            Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(output);
+            mediaPlayer.seek(mediaPlayer.getStartTime());
+            mediaPlayer.play();
         }
     }
 

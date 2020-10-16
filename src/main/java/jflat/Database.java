@@ -134,10 +134,20 @@ public class Database {
     }
 
     public void deleteEngWord(String selectedWord) {
-
+        String sql = "DELETE FROM av WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+                stmt.executeQuery(sql);
+        } catch (SQLException e) {
+        }
     }
 
     public void deleteVieWord(String selectedWord) {
-
+        String sql = "DELETE FROM va WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+            stmt.executeQuery(sql);
+        } catch (SQLException e) {
+        }
     }
 }

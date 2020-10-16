@@ -12,5 +12,8 @@
       <WebView id="defView" fx:id="defView" layoutX="262.0" layoutY="13.0" prefHeight="516.0" prefWidth="683.0" />
       <TextField fx:id="autoCompleteField" layoutX="82.0" layoutY="14.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="170.0" />
       <Button fx:id="switchBTN" layoutX="82.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchDict" prefHeight="27.0" prefWidth="170.0" text="Vietnamese - English" />
+      <Button fx:id="ttsBTN" layoutX="865.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#ttsPlay" text="Play" />
+      <Button fx:id="delWord" layoutX="839.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#deleteWord" text="Delete Words" />
+      <Button fx:id="addWord" layoutX="845.0" layoutY="93.0" mnemonicParsing="false" text="Add Words" />
    </children>
 </AnchorPane>
