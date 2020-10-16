@@ -16,7 +16,6 @@ public class Trie {
         trie.insert("atom");
         System.out.println(trie.findWords("a")); // [app, apple, atom]
         System.out.println(trie.search(" ")); // [app, apple, atom]
-
     }
 
     TrieNode root;
