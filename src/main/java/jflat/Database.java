@@ -61,6 +61,21 @@ public class Database {
         }
     }
 
+    public void listAutoCompleteAV(ObservableList<String> words, String selectedWord) {
+        words.clear();
+        String sql = "SELECT word FROM av WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                words.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public String getEngDef(String selectedWord) {
         String def = "";
         String sql = "SELECT html FROM av WHERE word LIKE " + "'" + selectedWord + "'";

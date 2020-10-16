@@ -65,6 +65,11 @@ public class JFlatController implements Initializable {
         }
     }
 
+    @FXML
+    public void autoCompleteListener() {
+        System.out.println(autoCompleteField.getText());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initWordsList();
