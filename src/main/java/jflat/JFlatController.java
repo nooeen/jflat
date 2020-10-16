@@ -32,7 +32,6 @@ public class JFlatController implements Initializable {
     @FXML
     public void initWordsList() {
         dictDB.listAV(words);
-        //dictDB.listVA(words);
         wordsList.setItems(words);
     }
 
@@ -67,7 +66,11 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void autoCompleteListener() {
-        System.out.println(autoCompleteField.getText());
+        if(isAV==true) {
+            dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
+        } else {
+            dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
+        }
     }
 
     @Override

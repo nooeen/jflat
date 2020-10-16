@@ -31,6 +31,7 @@ public class Database {
 
     public void listAV(ObservableList<String> words) {
         words.clear();
+
         String sql = "SELECT word FROM " + "av";
 
         try (Connection conn = this.connect();
@@ -47,6 +48,7 @@ public class Database {
 
     public void listVA(ObservableList<String> words) {
         words.clear();
+
         String sql = "SELECT word FROM " + "va";
 
         try (Connection conn = this.connect();
@@ -63,7 +65,22 @@ public class Database {
 
     public void listAutoCompleteAV(ObservableList<String> words, String selectedWord) {
         words.clear();
-        String sql = "SELECT word FROM av WHERE word LIKE " + "'" + selectedWord + "'";
+        String sql = "SELECT word FROM av WHERE word LIKE " + "'" + selectedWord + "%'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                words.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void listAutoCompleteVA(ObservableList<String> words, String selectedWord) {
+        words.clear();
+        String sql = "SELECT word FROM va WHERE word LIKE " + "'" + selectedWord + "%'";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {

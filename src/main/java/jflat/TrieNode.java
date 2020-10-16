@@ -9,7 +9,7 @@ public class TrieNode {
     List<String> words;
 
     public TrieNode() {
-        children = new TrieNode[256];
+        children = new TrieNode[65565];
         isWord = false;
         words = new ArrayList<>();
     }
