@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,6 +21,7 @@ public class JFlat extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         Scene main = new Scene(root, 960, 540);
         main.getStylesheets().add("jflat/style.css");
+        main.setFill(Color.TRANSPARENT);
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -38,7 +40,8 @@ public class JFlat extends Application {
 
         primaryStage.setTitle("JFlat");
         primaryStage.setScene(main);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+
         primaryStage.show();
     }
 
