@@ -2,6 +2,7 @@ package jflat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
@@ -27,6 +29,8 @@ public class JFlatController implements Initializable {
     public boolean isAV = true;
 
     @FXML
+    Stage stage;
+    @FXML
     public ListView<String> wordsList;
     @FXML
     public WebView defView;
@@ -40,6 +44,12 @@ public class JFlatController implements Initializable {
     public Button addBTN;
     @FXML
     public Button delBTN;
+    @FXML
+    public Button closeBTN;
+    @FXML
+    public Button minimizeBTN;
+    @FXML
+    public Button maximizeBTN;
 
     @FXML
     public void initWordsList() {
@@ -124,6 +134,16 @@ public class JFlatController implements Initializable {
             mediaPlayer.play();
         }
         System.gc();
+    }
+
+    public void handleCloseBTN(ActionEvent event){
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    public void handleMinimizeBTN(ActionEvent event) {
+        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @Override
