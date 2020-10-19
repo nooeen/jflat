@@ -29,11 +29,15 @@ public class Trie {
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) { // apple
-            if (cur.children[c] == null) {
-                cur.children[c] = new TrieNode();
+            //System.out.println(c);
+            if( c <= 256){
+                if (cur.children[c] == null) {
+                    cur.children[c] = new TrieNode();
+                }
+                cur = cur.children[c];
+                cur.words.add(word);
             }
-            cur = cur.children[c];
-            cur.words.add(word);
+
         }
         cur.isWord = true;
     }
