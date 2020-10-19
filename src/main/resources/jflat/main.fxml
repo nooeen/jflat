@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
+   <children>
+      <ListView id="wordsList" fx:id="wordsList" layoutX="82.0" layoutY="44.0" onKeyPressed="#getWordDef" onMouseClicked="#getWordDef" prefHeight="458.0" prefWidth="170.0" />
+      <WebView id="defView" fx:id="defView" layoutX="262.0" layoutY="13.0" prefHeight="516.0" prefWidth="683.0" />
+      <TextField fx:id="autoCompleteField" layoutX="82.0" layoutY="14.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="170.0" />
+      <Button fx:id="switchBTN" layoutX="82.0" layoutY="505.0" mnemonicParsing="false" onAction="#switchDict" prefHeight="27.0" prefWidth="32.0">
+         <graphic>
+            <FontIcon iconLiteral="ion4-md-swap" iconSize="20" />
+         </graphic></Button>
+      <Button fx:id="ttsBTN" layoutX="865.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#ttsPlay" text="Play" />
+      <Button fx:id="delBTN" layoutX="839.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#deleteWord" text="Delete Words" />
+      <Button fx:id="addBTN" layoutX="845.0" layoutY="93.0" mnemonicParsing="false" text="Add Words" />
+   </children>
+</AnchorPane>

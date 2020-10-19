@@ -12,11 +12,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class GCloudTTS {
-    public void mp3(String lang, String sentence) throws Exception{
+    public void mp3(String lang, String text) throws Exception{
         // Instantiates a client
         try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
             // Set the text input to be synthesized
-            SynthesisInput input = SynthesisInput.newBuilder().setText(sentence).build();
+            SynthesisInput input = SynthesisInput.newBuilder().setText(text).build();
 
             // Build the voice request, select the language code and the ssml voice gender
             VoiceSelectionParams voice = null;
@@ -48,9 +48,9 @@ public class GCloudTTS {
             ByteString audioContents = response.getAudioContent();
 
             // Write the response to the output file.
-            try (OutputStream out = new FileOutputStream("output.mp3")) {
+            try (OutputStream out = new FileOutputStream("ttsOutput.mp3")) {
                 out.write(audioContents.toByteArray());
-                System.out.println("Audio content written to file \"output.mp3\"");
+                //System.out.println("Audio content written to file \"output.mp3\"");
             }
         }
     }
