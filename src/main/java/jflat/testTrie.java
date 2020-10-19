@@ -27,39 +27,62 @@ class Trie {
         root = new TrieNode();
     }
 
-    /** Inserts a word into the trie. */
+    /**
+     * Inserts a word into the trie.
+     * @param word inserted word
+     */
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) { // apple
-            if (cur.children[c] == null) {
-                cur.children[c] = new TrieNode();
+            // if (cur.children[c] == null) {
+            //     cur.children[c] = new TrieNode();
+            // }
+            if (!cur.children.containsKey(c)) {
+                cur.children.put(c, new TrieNode());
             }
-            cur = cur.children[c];
+            // cur = cur.children[c];
+            cur = cur.children.get(c);
             cur.words.add(word);
         }
         cur.isWord = true;
     }
 
-    /** Returns if the word is in the trie. */
+    /**
+     * Returns if the word is in the trie.
+     * @param word word
+     * @return if the word is in the trie
+     */
     public boolean search(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            if(cur.children[c] == null) {
+            // if(cur.children[c] == null) {
+            //     return false;
+            // }
+            // cur = cur.children[c];
+            if(!cur.children.containsKey(c)) {
                 return false;
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
         return cur.isWord;
     }
 
-    /** Returns if there is any word in the trie that starts with the given prefix. */
+    /**
+     * Returns if there is any word in the trie that starts with the given prefix.
+     * @param prefix word's prefix
+     * @return words with the given prefix
+     */
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            if(cur.children[c] == null ) {
+            // if(cur.children[c] == null ) {
+            //     return false;
+            // }
+            // cur = cur.children[c];
+            if(!cur.children.containsKey(c)) {
                 return false;
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
 
         return true;
@@ -68,10 +91,15 @@ class Trie {
     public List<String> findWords(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            if(cur.children[c] == null ) {
-                return new ArrayList<>(); // empty list
+            // if(cur.children[c] == null ) {
+            //     return new ArrayList<>(); // empty list
+            // }
+            // cur = cur.children[c];
+
+            if(!cur.children.containsKey(c)) {
+                return new ArrayList<>();
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
 
         return cur.words; // list of words at that node
@@ -79,12 +107,14 @@ class Trie {
 }
 
 class TrieNode {
-    TrieNode[] children;
+    // TrieNode[] children;
+    Map<Character, TrieNode> children;
     boolean isWord;
     List<String> words;
 
     public TrieNode() {
-        children = new TrieNode[256];
+        // children = new TrieNode[143859];
+        children = new HashMap<>();
         isWord = false;
         words = new ArrayList<>();
     }
