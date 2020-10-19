@@ -37,9 +37,9 @@ public class JFlatController implements Initializable {
     @FXML
     public Button ttsBTN;
     @FXML
-    public Button addWord;
+    public Button addBTN;
     @FXML
-    public Button delWord;
+    public Button delBTN;
 
     @FXML
     public void initWordsList() {
@@ -59,21 +59,21 @@ public class JFlatController implements Initializable {
         } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
         }
+        System.gc();
     }
 
     @FXML
     public void switchDict() {
         if (isAV == true) {
-            switchBTN.setText("English - Vietnamese");
             dictDB.listVA(words);
             wordsList.setItems(words);
             isAV = false;
         } else {
-            switchBTN.setText("Vietnamese - English");
             dictDB.listAV(words);
             wordsList.setItems(words);
             isAV = true;
         }
+        System.gc();
     }
 
     @FXML
@@ -90,6 +90,7 @@ public class JFlatController implements Initializable {
             dictDB.deleteVieWord(selectedWord);
             dictDB.listVA(words);
         }
+        System.gc();
     }
 
     @FXML
@@ -99,6 +100,7 @@ public class JFlatController implements Initializable {
         } else {
             dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
         }
+        System.gc();
     }
 
     @FXML
@@ -121,6 +123,7 @@ public class JFlatController implements Initializable {
             mediaPlayer.seek(mediaPlayer.getStartTime());
             mediaPlayer.play();
         }
+        System.gc();
     }
 
     @Override

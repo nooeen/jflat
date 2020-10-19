@@ -12,18 +12,19 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.32.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.cloud:google-cloud-translate:1.95.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-cloud-translate-v3beta1:0.78.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-cloud-translate-v3:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.cloud:google-cloud-core:1.93.9" level="project" />
-    <orderEntry type="library" name="Maven: com.google.api.grpc:proto-google-iam-v1:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.cloud:google-cloud-core-http:1.93.9" level="project" />
-    <orderEntry type="library" name="Maven: com.google.api-client:google-api-client:1.30.10" level="project" />
-    <orderEntry type="library" name="Maven: com.google.oauth-client:google-oauth-client:1.31.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.http-client:google-http-client-appengine:1.36.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.api:gax-httpjson:0.75.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.apis:google-api-services-translate:v2-rev20170525-1.30.10" level="project" />
+    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.10" level="project" />
+    <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-graphics:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-graphics:mac:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-base:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-base:mac:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:mac:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-controls:11.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-controls:mac:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-core:11.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-javafx:11.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-ionicons4-pack:11.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-compiler-plugin:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.0" level="project" />
