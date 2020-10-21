@@ -12,6 +12,7 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
+      <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" />
       <WebView id="defView" fx:id="defView" layoutX="475.0" layoutY="49.0" prefHeight="446.0" prefWidth="470.0" />
       <Button fx:id="closeBTN" layoutX="910.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
          <graphic>
@@ -67,22 +68,26 @@
                   <FontIcon iconLiteral="ion4-ios-swap" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="addBTN" layoutX="35.0" layoutY="502.0" mnemonicParsing="false">
+            <Button fx:id="addBTN" layoutX="96.0" layoutY="502.0" mnemonicParsing="false">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-add" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="delBTN" layoutX="64.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#deleteWord">
+            <Button fx:id="delBTN" layoutX="125.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#deleteWord">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-close" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="ttsBTN" layoutX="90.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
+            <Button fx:id="ttsBTN" layoutX="35.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-play" iconSize="20" />
                </graphic>
             </Button>
-            <TextField fx:id="autoCompleteField" layoutY="14.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" />
+            <Button fx:id="ttsBTN1" layoutX="63.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
+               <graphic>
+                  <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-heart" iconSize="18" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>
