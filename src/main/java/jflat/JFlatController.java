@@ -83,6 +83,7 @@ public class JFlatController implements Initializable {
             wordsList.setItems(words);
             isAV = true;
         }
+
         System.gc();
     }
 
