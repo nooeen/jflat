@@ -1,4 +1,5 @@
 .root {
+    -fx-font-family: 'Montserrat', sans-serif;
     -fx-background-color: #FFF;
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;
@@ -23,5 +24,75 @@
 }
 
 #defView {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
 
+#menuPane {
+    -fx-background-color: linear-gradient(to top, #a1c4fd, #c2e9fb);
+    -fx-border-radius: 30 30 30 30;
+    -fx-background-radius: 30 30 30 30;
+}
+
+#autoCompleteField {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.mylistview {
+    -fx-font-smoothing-type: lcd;
+    -fx-background-radius: 20;
+    -fx-font-weight: 100;
+    -fx-font-size: 14;
+}
+
+.mylistview .list-cell:focused {
+    -fx-border-radius: 20;
+}
+
+
+.mylistview .scroll-bar:horizontal .track,
+.mylistview .scroll-bar:vertical .track{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 5.0em;
+    -fx-border-radius :2.0em;
+}
+
+.mylistview .scroll-bar:horizontal .increment-button ,
+.mylistview .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+.mylistview .scroll-bar:vertical .increment-button ,
+.mylistview .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+
+}
+
+.mylistview  .scroll-bar .increment-arrow,
+.mylistview  .scroll-bar .decrement-arrow
+{
+    -fx-shape : " ";
+    -fx-padding :0.0;
+}
+
+.mylistview .scroll-bar:horizontal .thumb,
+.mylistview .scroll-bar:vertical .thumb {
+    -fx-background-color :derive(black,90.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+.mylistview .scroll-bar:horizontal .thumb:hover,
+.mylistview .scroll-bar:vertical .thumb:hover {
+    -fx-background-color :derive(#4D4C4F,10.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
 }

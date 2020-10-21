@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebView;
@@ -30,6 +31,8 @@ public class JFlatController implements Initializable {
 
     @FXML
     Stage stage;
+    @FXML
+    public AnchorPane menuPane;
     @FXML
     public ListView<String> wordsList;
     @FXML
