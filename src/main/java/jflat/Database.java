@@ -1,15 +1,8 @@
 package jflat;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Database {
     /**
@@ -172,6 +165,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
                 stmt.executeQuery(sql);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -181,6 +175,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
             stmt.executeQuery(sql);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -1,40 +1,24 @@
 package jflat;
 
-import com.sun.webkit.WebPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class JFlatController implements Initializable {
-    public JFlat jflat = new JFlat();
-
     public Database dictDB = new Database();
 
     public GCloudTTS tts = new GCloudTTS();
@@ -48,13 +32,7 @@ public class JFlatController implements Initializable {
     public boolean isDark = false;
 
     @FXML
-    Stage stage;
-    @FXML
-    Scene homeScene;
-    @FXML
-    Scene translateScene;
-    @FXML
-    Scene settingsScene;
+    public AnchorPane dynamicPane;
     @FXML
     public AnchorPane menuPane;
     @FXML
@@ -97,6 +75,12 @@ public class JFlatController implements Initializable {
     }
 
     @FXML
+    public void setPane(AnchorPane pane) {
+        this.dynamicPane.getChildren().clear();
+        this.dynamicPane.getChildren().add(pane);
+    }
+
+    @FXML
     public void getWordDef() {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -114,9 +98,9 @@ public class JFlatController implements Initializable {
 
         }
 
-        if (isAV == true) {
+        if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
-        } else if (isAV == false) {
+        } else if (!isAV) {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
         }
         System.gc();
@@ -127,7 +111,7 @@ public class JFlatController implements Initializable {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         }
-        if (isAV == true) {
+        if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
         } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
@@ -137,7 +121,7 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void switchDict() {
-        if (isAV == true) {
+        if (isAV) {
             dictDB.listVA(words);
             wordsList.setItems(words);
             isAV = false;
@@ -153,9 +137,7 @@ public class JFlatController implements Initializable {
     @FXML
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
-        StringBuilder sb = new StringBuilder(selectedWord);
-        selectedWord = sb.toString();
-        if (isAV == true) {
+        if (isAV) {
             dictDB.deleteEngWord(selectedWord);
             dictDB.listAV(words);
         } else {
@@ -167,7 +149,7 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void autoCompleteListener() {
-        if (isAV == true) {
+        if (isAV) {
             dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
             String selectedWord = "";
             if (!words.isEmpty()) {
@@ -192,13 +174,13 @@ public class JFlatController implements Initializable {
         sb.deleteCharAt(0);
         sb.deleteCharAt(sb.length() - 1);
         selectedWord = sb.toString();
-        if (isAV == true && selectedWord != "") {
+        if (isAV && !selectedWord.equals("")) {
             tts.mp3("en-US", selectedWord);
             Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(output);
             mediaPlayer.seek(mediaPlayer.getStartTime());
             mediaPlayer.play();
-        } else if (isAV == false && selectedWord != "") {
+        } else if (!isAV && !selectedWord.equals("")) {
             tts.mp3("vi-VN", selectedWord);
             Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(output);
@@ -209,7 +191,7 @@ public class JFlatController implements Initializable {
     }
 
     public void handleCloseBTN(ActionEvent event) {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
@@ -224,20 +206,19 @@ public class JFlatController implements Initializable {
         }
     }
 
-    public void handleHomeMenuBTN() throws IOException {
+    public void handleHomeMenuBTN(){
         isFav = false;
         isHistory = false;
 
         if (isAV) {
             dictDB.listAV(words);
-            wordsList.setItems(words);
         } else {
             dictDB.listVA(words);
-            wordsList.setItems(words);
         }
+        wordsList.setItems(words);
     }
 
-    public void handleFavoriteMenuBTN() throws IOException {
+    public void handleFavoriteMenuBTN() {
         isFav = true;
         isHistory = false;
 

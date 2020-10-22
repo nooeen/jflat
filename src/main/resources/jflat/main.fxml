@@ -9,7 +9,7 @@
 <?import javafx.scene.web.WebView?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
+<AnchorPane fx:id="dynamicPane" prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
       <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Search..." />
       <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">

@@ -20,14 +20,14 @@ public class GCloudTTS {
 
             // Build the voice request, select the language code and the ssml voice gender
             VoiceSelectionParams voice = null;
-            if(lang=="en-US") {
+            if(lang.equals("en-US")) {
                 voice = VoiceSelectionParams.newBuilder()
                         .setLanguageCode("en-US")
                         .setSsmlGender(SsmlVoiceGender.FEMALE)
                         .setName("en-US-Wavenet-C")
                         .build();
             }
-            if(lang=="vi-VN") {
+            if(lang.equals("vi-VN")) {
                 voice = VoiceSelectionParams.newBuilder()
                                 .setLanguageCode("vi-VN")
                                 .setSsmlGender(SsmlVoiceGender.FEMALE)
