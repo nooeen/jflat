@@ -6,7 +6,7 @@ public class CLIJFlat {
      *
      * @param args default args
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         CLIDictionary dict = new CLIDictionary();
         CLIDictionaryManagement dictMgmt = new CLIDictionaryManagement();
         CLIDictionaryCommandLine dictCli = new CLIDictionaryCommandLine();

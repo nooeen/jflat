@@ -1,0 +1,114 @@
+.root {
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-background-color: rgb(29, 29, 29);
+    -fx-border-radius: 30 30 30 30;
+    -fx-background-radius: 30 30 30 30;
+}
+
+.ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #828282;
+}
+
+.button:hover .ikonli-font-icon {
+    -fx-icon-color: rgb(230, 227, 220);
+}
+
+.button:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+#menuPane {
+    -fx-background-color: rgb(47, 48, 48);
+    -fx-border-radius: 30 30 30 30;
+    -fx-background-radius: 30 30 30 30;
+}
+
+#menuPane .button{
+    -fx-text-fill: white;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
+}
+
+#autoCompleteField {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(47, 48, 48);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+#defView {
+    -fx-background-color: transparent;
+}
+
+.wordsListView {
+    -fx-font-smoothing-type: lcd;
+    -fx-background-radius: 20;
+    -fx-font-weight: 100;
+    -fx-font-size: 14;
+    -fx-background-color: rgb(47, 48, 48);
+}
+
+.wordsListView .list-cell {
+    -fx-background-color: rgb(47,48,48);
+    -fx-text-fill: white;
+}
+
+.wordsListView .list-cell:focused {
+    -fx-background-color: rgb(27,27,27);
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.wordsListView .scroll-bar:horizontal .track,
+.wordsListView .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 5.0em;
+    -fx-border-radius: 2.0em;
+}
+
+.wordsListView .scroll-bar:horizontal .increment-button,
+.wordsListView .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 10 0;
+}
+
+.wordsListView .scroll-bar:vertical .increment-button,
+.wordsListView .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 0 0;
+    /*0 10 0 0 for track*/
+}
+
+.wordsListView .scroll-bar .increment-arrow,
+.wordsListView .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0.0;
+}
+
+.wordsListView .scroll-bar:horizontal .thumb,
+.wordsListView .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}
+
+.wordsListView .scroll-bar:horizontal .thumb:hover,
+.wordsListView .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: derive(#4D4C4F, 10.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}

@@ -6,17 +6,16 @@ public class Trie {
     public static void main(String[] args) {
         Trie trie = new Trie();
 
-        trie.insert("apple");
-        System.out.println(trie.search("apple"));   // returns true
+        trie.insert("đấy ");
+        System.out.println(trie.search("đấy "));   // returns true
         System.out.println(trie.search("app"));     // returns false
         System.out.println(trie.startsWith("a")); // returns true
-        trie.insert("app");
+        trie.insert("aalo ");
         System.out.println(trie.search("app"));     // returns true
         System.out.println(trie.findWords("ap")); // [app, apple]
         trie.insert("atom");
         System.out.println(trie.findWords("a")); // [app, apple, atom]
         System.out.println(trie.search(" ")); // [app, apple, atom]
-
     }
 
     TrieNode root;
@@ -25,7 +24,10 @@ public class Trie {
         root = new TrieNode();
     }
 
-    /** Inserts a word into the trie. */
+    /**
+     * Inserts a word into the trie.
+     * @param word inserted word
+     */
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) { // apple
@@ -42,7 +44,11 @@ public class Trie {
         cur.isWord = true;
     }
 
-    /** Returns if the word is in the trie. */
+    /**
+     * Returns if the word is in the trie.
+     * @param word word
+     * @return if the word is in the trie
+     */
     public boolean search(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
@@ -54,7 +60,11 @@ public class Trie {
         return cur.isWord;
     }
 
-    /** Returns if there is any word in the trie that starts with the given prefix. */
+    /**
+     * Returns if there is any word in the trie that starts with the given prefix.
+     * @param prefix word's prefix
+     * @return words with the given prefix
+     */
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
