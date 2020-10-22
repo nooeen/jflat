@@ -19,7 +19,7 @@
 }
 
 .button:hover .ikonli-font-icon {
-    -fx-icon-color: blue;
+    -fx-icon-color: rgb(230, 227, 220);
 }
 
 .button:pressed {
@@ -31,6 +31,13 @@
     -fx-background-color: rgb(47, 48, 48);
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;
+}
+
+#menuPane .button{
+    -fx-text-fill: white;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
 }
 
 #autoCompleteField {

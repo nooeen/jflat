@@ -29,7 +29,7 @@ public class JFlatController implements Initializable {
     public boolean isAV = true;
     public boolean isFav = false;
     public boolean isHistory = false;
-    public boolean isDark = false;
+    public boolean isDark = true;
     public boolean isHome = true;
     public boolean isTranslate = false;
     public boolean inited = false;

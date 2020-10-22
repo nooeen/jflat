@@ -18,7 +18,7 @@ public class JFlat extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         Scene scene = new Scene(root, 960, 590);
-        scene.getStylesheets().add("jflat/style.css");
+        scene.getStylesheets().add("jflat/darkstyle.css");
         scene.setFill(Color.TRANSPARENT);
 
         root.setOnMousePressed(event -> {
