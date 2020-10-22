@@ -10,26 +10,26 @@
 <?import javafx.scene.web.WebView?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
+<AnchorPane prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
       <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" />
-      <WebView id="defView" fx:id="defView" layoutX="475.0" layoutY="49.0" prefHeight="446.0" prefWidth="470.0" />
-      <Button fx:id="closeBTN" layoutX="910.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
+      <WebView id="defView" fx:id="defView" layoutX="475.0" layoutY="49.0" prefHeight="494.0" prefWidth="470.0" styleClass="defViewClass" />
+      <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
          <graphic>
             <FontIcon iconLiteral="mdi-close" iconSize="15" />
          </graphic>
       </Button>
-      <Button fx:id="maximizeBTN" layoutX="867.0" layoutY="13.0" mnemonicParsing="false">
+      <Button fx:id="maximizeBTN" layoutX="869.0" layoutY="13.0" mnemonicParsing="false">
          <graphic>
             <FontIcon iconLiteral="mdi-window-maximize" iconSize="15" />
          </graphic>
       </Button>
-      <Button fx:id="minimizeBTN" layoutX="823.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleMinimizeBTN">
+      <Button fx:id="minimizeBTN" layoutX="825.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleMinimizeBTN">
          <graphic>
             <FontIcon iconLiteral="mdi-window-minimize" iconSize="15" />
          </graphic>
       </Button>
-      <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="519.0" prefWidth="198.0">
+      <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="567.0" prefWidth="198.0">
          <children>
             <Text fill="WHITE" layoutX="63.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="71.3935546875">
                <font>
@@ -57,9 +57,9 @@
             <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-settings" iconSize="25" layoutX="34.0" layoutY="340.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="222.0" prefHeight="540.0" prefWidth="240.0">
+      <AnchorPane layoutX="222.0" layoutY="49.0" prefHeight="540.0" prefWidth="240.0">
          <children>
-            <ListView id="wordsList" fx:id="wordsList" layoutY="49.0" onKeyPressed="#getWordDef" onMouseClicked="#getWordDef" prefHeight="446.0" prefWidth="240.0" styleClass="mylistview">
+            <ListView id="wordsList" fx:id="wordsList" layoutY="1.0" onKeyPressed="#getWordDef" onMouseClicked="#getWordDef" prefHeight="494.0" prefWidth="240.0" styleClass="wordsListView">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></ListView>

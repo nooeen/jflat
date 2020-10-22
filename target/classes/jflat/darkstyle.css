@@ -1,8 +1,12 @@
 .root {
     -fx-font-family: 'Montserrat', sans-serif;
-    -fx-background-color: #FFF;
+    -fx-background-color: rgb(29, 29, 29);
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;
+}
+
+.ikonli-font-icon {
+    -fx-icon-color: white;
 }
 
 .button {
@@ -24,17 +28,20 @@
 }
 
 #menuPane {
-    -fx-background-color: linear-gradient(to top, #a1c4fd, #c2e9fb);
+    -fx-background-color: rgb(47, 48, 48);
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;
 }
 
 #autoCompleteField {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(47, 48, 48);
     -fx-background-radius: 20;
     -fx-border-radius: 20;
 }
 
 .defViewClass {
+    -fx-background-color: transparent;
     -fx-background-radius: 20;
     -fx-border-radius: 20;
 }
@@ -44,6 +51,12 @@
     -fx-background-radius: 20;
     -fx-font-weight: 100;
     -fx-font-size: 14;
+    -fx-background-color: rgb(47, 48, 48);
+}
+
+.wordsListView .list-cell {
+    -fx-background-color: rgb(47,48,48);
+    -fx-text-fill: white;
 }
 
 .wordsListView .list-cell:focused {
@@ -63,16 +76,13 @@
     -fx-background-color: transparent;
     -fx-background-radius: 0em;
     -fx-padding: 0 0 10 0;
-
 }
 
 .wordsListView .scroll-bar:vertical .increment-button,
 .wordsListView .scroll-bar:vertical .decrement-button {
-
     -fx-background-color: transparent;
     -fx-background-radius: 0em;
     -fx-padding: 0 10 0 0;
-
 }
 
 .wordsListView .scroll-bar .increment-arrow,
