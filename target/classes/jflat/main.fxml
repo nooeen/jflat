@@ -6,14 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
-      <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" />
-      <WebView id="defView" fx:id="defView" layoutX="475.0" layoutY="49.0" prefHeight="494.0" prefWidth="470.0" styleClass="defViewClass" />
+      <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Search..." />
       <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
          <graphic>
             <FontIcon iconLiteral="mdi-close" iconSize="15" />
@@ -31,30 +29,38 @@
       </Button>
       <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="567.0" prefWidth="198.0">
          <children>
-            <Text fill="WHITE" layoutX="63.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="71.3935546875">
+            <Button fx:id="homeMenuBTN" layoutX="27.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleHomeMenuBTN" text="Home" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-home" iconSize="25" />
+               </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
-            <Text fill="WHITE" layoutX="63.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Translate" wrappingWidth="77.3935546875">
+            </Button>
+            <Button fx:id="favoriteMenuBTN" layoutX="27.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleFavoriteMenuBTN" text="Favorite" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-heart" iconSize="25" />
+               </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
-            <Text fill="WHITE" layoutX="62.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favorite" wrappingWidth="71.3935546875">
+            </Button>
+            <Button fx:id="translateMenuBTN" layoutX="27.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#handleTranslateMenuBTN" text="Translate" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-copy" iconSize="27" />
+               </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
-            <Text fill="WHITE" layoutX="62.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="56.3935546875">
+            </Button>
+            <Button fx:id="settingsMenuBTN" layoutX="27.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#handleSettingsMenuBTN" text="Settings" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-settings" iconSize="25" />
+               </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
-            <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-home" iconSize="25" layoutX="33.0" layoutY="217.0" />
-            <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-heart" iconSize="25" layoutX="33.0" layoutY="260.0" />
-            <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-copy" iconSize="25" layoutX="34.0" layoutY="301.0" />
-            <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-settings" iconSize="25" layoutX="34.0" layoutY="340.0" />
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="222.0" layoutY="49.0" prefHeight="540.0" prefWidth="240.0">
@@ -68,24 +74,29 @@
                   <FontIcon iconLiteral="ion4-ios-swap" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="addBTN" layoutX="96.0" layoutY="502.0" mnemonicParsing="false">
+            <Button fx:id="addBTN" layoutX="145.0" layoutY="502.0" mnemonicParsing="false">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-add" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="delBTN" layoutX="125.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#deleteWord">
+            <Button fx:id="delBTN" layoutX="214.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#deleteWord">
                <graphic>
-                  <FontIcon iconLiteral="ion4-ios-close" iconSize="20" />
+                  <FontIcon iconLiteral="ion4-ios-remove" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="ttsBTN" layoutX="35.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
-               <graphic>
-                  <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-play" iconSize="20" />
-               </graphic>
-            </Button>
-            <Button fx:id="ttsBTN1" layoutX="63.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
+            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-heart" iconSize="18" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="webPane" layoutX="475.0" layoutY="49.0" prefHeight="494.0" prefWidth="470.0">
+         <children>
+            <WebView id="defView" fx:id="defView" prefHeight="494.0" prefWidth="470.0" />
+            <Button fx:id="ttsBTN" layoutX="429.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
+               <graphic>
+                  <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-volume-high" iconSize="30" />
                </graphic>
             </Button>
          </children>

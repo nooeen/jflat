@@ -5,23 +5,25 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class JFlat extends Application {
+
     private double xOffset = 0;
     private double yOffset = 0;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        Scene main = new Scene(root, 960, 590);
-        main.getStylesheets().add("jflat/darkstyle.css");
-        main.setFill(Color.TRANSPARENT);
+        Scene scene = new Scene(root, 960, 590);
+        scene.getStylesheets().add("jflat/style.css");
+        scene.setFill(Color.TRANSPARENT);
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -39,7 +41,7 @@ public class JFlat extends Application {
         });
 
         primaryStage.setTitle("JFlat");
-        primaryStage.setScene(main);
+        primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
         primaryStage.show();

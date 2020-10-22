@@ -63,6 +63,23 @@ public class Database {
         }
     }
 
+    public void listFav(ObservableList<String> favWords) {
+        favWords.clear();
+
+        String sql = "SELECT word FROM " + "fav";
+
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                favWords.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void listAutoCompleteAV(ObservableList<String> words, String selectedWord) {
         words.clear();
         String sql = "SELECT word FROM av WHERE word LIKE " + "'" + selectedWord + "%'";
@@ -112,6 +129,22 @@ public class Database {
     public String getVieDef(String selectedWord) {
         String def = "";
         String sql = "SELECT html FROM va WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                def = rs.getString("html");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return def;
+    }
+
+    public String getFavDef(String selectedWord) {
+        String def = "";
+        String sql = "SELECT html FROM fav WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {

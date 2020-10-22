@@ -10,12 +10,10 @@
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
-    -fx-font-size: 1em; /* 12 */
-    -fx-text-fill: #828282;
 }
 
 .button:hover .ikonli-font-icon {
-    -fx-icon-color: blue;
+    -fx-icon-color: linear-gradient(to right, #a1c4fd, #c2e9fb);
 }
 
 .button:pressed {
@@ -27,14 +25,26 @@
     -fx-background-color: linear-gradient(to top, #a1c4fd, #c2e9fb);
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;
+    -fx-font-family: 'Montserrat', sans-serif;
+}
+
+#menuPane .button:hover {
+    -fx-text-fill: #93a5cf;
+}
+
+#menuPane .button:hover .ikonli-font-icon {
+    -fx-icon-color: #93a5cf;
+    -fx-text-fill: #93a5cf;
+}
+
+#menuPane .button{
+    -fx-text-fill: white;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
 }
 
 #autoCompleteField {
-    -fx-background-radius: 20;
-    -fx-border-radius: 20;
-}
-
-.defViewClass {
     -fx-background-radius: 20;
     -fx-border-radius: 20;
 }
@@ -46,8 +56,14 @@
     -fx-font-size: 14;
 }
 
+.wordsListView .list-cell {
+    -fx-background-color: transparent;
+}
+
 .wordsListView .list-cell:focused {
+    -fx-background-color: linear-gradient(to right, #a1c4fd, #c2e9fb);
     -fx-border-radius: 20;
+    -fx-background-radius: 20;
 }
 
 .wordsListView .scroll-bar:horizontal .track,
@@ -71,7 +87,8 @@
 
     -fx-background-color: transparent;
     -fx-background-radius: 0em;
-    -fx-padding: 0 10 0 0;
+    -fx-padding: 0 0 0 0;
+    /*0 10 0 0 for track*/
 
 }
 
