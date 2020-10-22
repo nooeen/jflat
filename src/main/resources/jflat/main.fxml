@@ -45,7 +45,7 @@
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="translateMenuBTN" layoutX="27.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#handleTranslateMenuBTN" text="Translate" textFill="WHITE">
+            <Button fx:id="translateMenuBTN" layoutX="27.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleTranslateMenuBTN" onMouseClicked="#handleTranslateMenuBTN" text="Translate" textFill="WHITE">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-copy" iconSize="27" />
                </graphic>

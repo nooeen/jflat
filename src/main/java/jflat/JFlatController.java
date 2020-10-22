@@ -30,6 +30,9 @@ public class JFlatController implements Initializable {
     public boolean isFav = false;
     public boolean isHistory = false;
     public boolean isDark = false;
+    public boolean isHome = true;
+    public boolean isTranslate = false;
+    public boolean inited = false;
 
     @FXML
     public AnchorPane dynamicPane;
@@ -75,12 +78,6 @@ public class JFlatController implements Initializable {
     }
 
     @FXML
-    public void setPane(AnchorPane pane) {
-        this.dynamicPane.getChildren().clear();
-        this.dynamicPane.getChildren().add(pane);
-    }
-
-    @FXML
     public void getWordDef() {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -94,13 +91,14 @@ public class JFlatController implements Initializable {
 
         if (isFav) {
             defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
+            return;
         } else if (isHistory) {
-
+            return;
         }
 
         if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
-        } else if (!isAV) {
+        } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
         }
         System.gc();
@@ -206,9 +204,14 @@ public class JFlatController implements Initializable {
         }
     }
 
-    public void handleHomeMenuBTN(){
-        isFav = false;
+    public void handleHomeMenuBTN() {
+        isTranslate = false;
         isHistory = false;
+        isFav = false;
+        if (!isHome) {
+
+            isHome = true;
+        }
 
         if (isAV) {
             dictDB.listAV(words);
@@ -219,25 +222,40 @@ public class JFlatController implements Initializable {
     }
 
     public void handleFavoriteMenuBTN() {
-        isFav = true;
+        isTranslate = false;
         isHistory = false;
+        isFav = true;
+        if (!isHome) {
+
+            isHome = true;
+        }
 
         dictDB.listFav(favWords);
         wordsList.setItems(favWords);
     }
 
     public void handleTranslateMenuBTN() {
+        isHome = false;
+        if(!isTranslate) {
 
+            isTranslate = true;
+        }
     }
 
     public void handleSettingsMenuBTN() {
+        isHome = false;
+        isTranslate = false;
+        isHistory = false;
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initWordsList();
-        switchUI(isDark);
+        if(!inited) {
+            initWordsList();
+            switchUI(isDark);
+            inited = true;
+        }
     }
 
 
