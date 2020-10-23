@@ -188,4 +188,14 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public void deleteFavWord(String selectedWord) {
+        String sql = "DELETE FROM fav WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+            stmt.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

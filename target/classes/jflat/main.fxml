@@ -84,7 +84,7 @@
                   <FontIcon iconLiteral="ion4-ios-remove" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleFavBTN" onMouseClicked="#ttsPlay">
+            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleFavBTN">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-heart" iconSize="18" />
                </graphic>
@@ -93,7 +93,7 @@
       </AnchorPane>
       <AnchorPane fx:id="webPane" layoutX="475.0" layoutY="49.0" prefHeight="494.0" prefWidth="470.0">
          <children>
-            <WebView id="defView" fx:id="defView" prefHeight="494.0" prefWidth="470.0" styleClass="defViewClass" />
+            <WebView id="defView" fx:id="defView" prefHeight="494.0" prefWidth="470.0" styleClass="defViewer" />
             <Button fx:id="ttsBTN" layoutX="415.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-volume-high" iconSize="30" />

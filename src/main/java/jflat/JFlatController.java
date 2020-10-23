@@ -132,19 +132,31 @@ public class JFlatController implements Initializable {
             wordsList.setItems(words);
             isAV = true;
         }
-
         System.gc();
     }
 
     @FXML
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        if (isFav) {
+            dictDB.deleteFavWord(selectedWord);
+            dictDB.listFav(words);
+            wordsList.setItems(words);
+            System.gc();
+            return;
+        }
         if (isAV) {
             dictDB.deleteEngWord(selectedWord);
             dictDB.listAV(words);
+            wordsList.setItems(words);
         } else {
             dictDB.deleteVieWord(selectedWord);
             dictDB.listVA(words);
+            wordsList.setItems(words);
         }
         System.gc();
     }
@@ -193,15 +205,19 @@ public class JFlatController implements Initializable {
     }
 
     public void handleFavBTN() {
-        if(!isFav) {
+        if (!isFav) {
             String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+            StringBuilder sb = new StringBuilder(selectedWord);
+            sb.deleteCharAt(0);
+            sb.deleteCharAt(sb.length() - 1);
+            selectedWord = sb.toString();
+            System.out.println(selectedWord);
             String lang = "av";
-            if(!isAV) {
+            if (!isAV) {
                 lang = "va";
             }
             dictDB.addFavWord(selectedWord, lang);
         }
-
     }
 
     public void handleCloseBTN(ActionEvent event) {
@@ -268,7 +284,7 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isSettings = false;
 
-        if(!isTranslate) {
+        if (!isTranslate) {
             autoCompleteField.setVisible(true);
             webPane.setVisible(false);
             listPane.setVisible(false);
@@ -281,7 +297,7 @@ public class JFlatController implements Initializable {
         isTranslate = false;
         isHistory = false;
 
-        if(!isSettings) {
+        if (!isSettings) {
             autoCompleteField.setVisible(false);
             listPane.setVisible(false);
             webPane.setVisible(false);
