@@ -192,6 +192,18 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    public void handleFavBTN() {
+        if(!isFav) {
+            String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+            String lang = "av";
+            if(!isAV) {
+                lang = "va";
+            }
+            dictDB.addFavWord(selectedWord, lang);
+        }
+
+    }
+
     public void handleCloseBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();

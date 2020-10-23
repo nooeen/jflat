@@ -151,6 +151,16 @@ public class Database {
         return def;
     }
 
+    public void addFavWord(String selectedWord, String lang) {
+        String sql = "INSERT INTO fav SELECT * FROM " + lang + " WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+            stmt.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void addEngWord() {
 
     }

@@ -84,7 +84,7 @@
                   <FontIcon iconLiteral="ion4-ios-remove" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#ttsPlay">
+            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleFavBTN" onMouseClicked="#ttsPlay">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-heart" iconSize="18" />
                </graphic>
