@@ -17,7 +17,7 @@ public class Database {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         return conn;
     }
@@ -35,7 +35,7 @@ public class Database {
                 words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -52,7 +52,7 @@ public class Database {
                 words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ public class Database {
                 favWords.add(rs.getString("word"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -84,7 +84,7 @@ public class Database {
                 words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -99,7 +99,6 @@ public class Database {
                 words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -114,7 +113,7 @@ public class Database {
                 def = rs.getString("html");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         return def;
     }
@@ -130,7 +129,7 @@ public class Database {
                 def = rs.getString("html");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         return def;
     }
@@ -146,7 +145,7 @@ public class Database {
                 def = rs.getString("html");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         return def;
     }
@@ -157,7 +156,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
             stmt.executeQuery(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -175,7 +174,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
                 stmt.executeQuery(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -185,7 +184,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
             stmt.executeQuery(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -195,7 +194,7 @@ public class Database {
              Statement stmt = conn.createStatement();) {
             stmt.executeQuery(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 }
