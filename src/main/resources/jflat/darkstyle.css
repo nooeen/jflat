@@ -112,3 +112,45 @@
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 2.0em;
 }
+.defViewClass .scroll-bar:horizontal .track,
+.defViewClass .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 5.0em;
+    -fx-border-radius: 2.0em;
+}
+
+.defViewClass .scroll-bar:horizontal .increment-button,
+.defViewClass .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 10 0;
+}
+
+.defViewClass .scroll-bar:vertical .increment-button,
+.defViewClass .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 10 0 0;
+    /*0 10 0 0 for track*/
+}
+
+.defViewClass .scroll-bar .increment-arrow,
+.defViewClass .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0.0;
+}
+
+.defViewClass .scroll-bar:horizontal .thumb,
+.defViewClass .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}
+
+.defViewClass .scroll-bar:horizontal .thumb:hover,
+.defViewClass .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: derive(#4D4C4F, 10.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}

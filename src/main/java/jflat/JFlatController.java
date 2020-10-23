@@ -214,6 +214,8 @@ public class JFlatController implements Initializable {
         isFav = false;
         isSettings = false;
 
+        defView.getEngine().loadContent("");
+
         if (!isHome) {
             autoCompleteField.setVisible(true);
             webPane.setVisible(true);
@@ -234,6 +236,8 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isFav = true;
         isSettings = false;
+
+        defView.getEngine().loadContent("");
 
         if (!isHome) {
             autoCompleteField.setVisible(true);
