@@ -234,6 +234,21 @@ public class Database {
         System.out.println(def);
         return def;
     }
+    public int getFavId() {
+        int id = 0;
+        String def = "";
+        String sql = "select count(*) from fav";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            rs.next();
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
 
 
     public void addFavWord(String a, boolean isAV) {
@@ -253,14 +268,14 @@ public class Database {
             wordPro = getViePro(a);
         }
 
-        int id = 23;
+        int id = getFavId() ;
 
 
         try {
             Statement insert = connect().createStatement();
             String t = String.format("VALUES (%d, '%s', '%s', '%s', '%s')", id, a, wordDef, wordDes, wordPro);
             System.out.println(t);
-            insert.executeUpdate("INSERT INTO fav " + t);
+            //insert.executeUpdate("INSERT INTO fav " + t);
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
