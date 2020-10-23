@@ -59,6 +59,8 @@ public class JFlatController implements Initializable {
     @FXML
     public Button addBTN;
     @FXML
+    public Button updateBTN;
+    @FXML
     public Button delBTN;
     @FXML
     public Button closeBTN;

@@ -18,14 +18,14 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-graphics:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-graphics:mac:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:11.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-base:11.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-base:mac:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:mac:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-controls:11.0.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-controls:mac:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:mac:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:11.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-core:11.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-javafx:11.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-ionicons4-pack:11.5.0" level="project" />
@@ -121,5 +121,18 @@
     <orderEntry type="library" name="Maven: com.google.http-client:google-http-client-appengine:1.36.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.api:gax-httpjson:0.75.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.apis:google-api-services-translate:v2-rev20170525-1.30.10" level="project" />
+    <orderEntry type="library" name="Maven: com.kodedu.terminalfx:terminalfx:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.pty4j:pty4j:0.8.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.pty4j:purejavacomm:0.0.11.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains:annotations:16.0.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: log4j:log4j:1.2.14" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.java.dev.jna:jna:4.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.java.dev.jna:jna-platform:4.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.8" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:12" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:mac:12" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:12" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:12" level="project" />
   </component>
 </module>

@@ -71,22 +71,27 @@
                </padding></ListView>
             <Button fx:id="switchBTN" layoutX="-1.0" layoutY="502.0" mnemonicParsing="false" onAction="#switchDict" prefHeight="27.0" prefWidth="32.0">
                <graphic>
-                  <FontIcon iconLiteral="ion4-ios-swap" iconSize="20" />
+                  <FontIcon iconLiteral="ion4-ios-repeat" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="addBTN" layoutX="145.0" layoutY="502.0" mnemonicParsing="false">
+            <Button fx:id="addBTN" layoutX="106.0" layoutY="502.0" mnemonicParsing="false">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-add" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="delBTN" layoutX="214.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#deleteWord">
+            <Button fx:id="delBTN" layoutX="159.0" layoutY="502.0" mnemonicParsing="false" onAction="#deleteWord">
                <graphic>
-                  <FontIcon iconLiteral="ion4-ios-remove" iconSize="20" />
+                  <FontIcon iconLiteral="ion4-ios-arrow-up" iconSize="20" />
                </graphic>
             </Button>
-            <Button fx:id="favBTN" layoutX="72.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleFavBTN">
+            <Button fx:id="favBTN" layoutX="51.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleFavBTN">
                <graphic>
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-heart" iconSize="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="updateBTN" layoutX="212.0" layoutY="502.0" mnemonicParsing="false">
+               <graphic>
+                  <FontIcon iconLiteral="ion4-ios-remove" iconSize="20" />
                </graphic>
             </Button>
          </children>
