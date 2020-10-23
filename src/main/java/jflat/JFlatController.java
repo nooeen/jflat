@@ -143,6 +143,11 @@ public class JFlatController implements Initializable {
     }
 
     @FXML
+    public void addWord() {
+        return;
+    }
+
+    @FXML
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
         StringBuilder sb = new StringBuilder(selectedWord);
