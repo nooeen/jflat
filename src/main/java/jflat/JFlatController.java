@@ -226,13 +226,13 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isFav = true;
         if (!isHome) {
-
             isHome = true;
         }
 
         dictDB.listFav(favWords);
         wordsList.setItems(favWords);
     }
+
 
     public void handleTranslateMenuBTN() {
         isHome = false;
@@ -258,5 +258,11 @@ public class JFlatController implements Initializable {
         }
     }
 
+    public void handleFavoriteBTN() {
+        String a = new String();
+        a = wordsList.getSelectionModel().getSelectedItems().toString();
+        dictDB.addFavWord(a, true);
+
+    }
 
 }
