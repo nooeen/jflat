@@ -34,6 +34,7 @@ public class JFlatController implements Initializable {
     public boolean isFav = false;
     public boolean isHistory = false;
     public boolean isTranslate = false;
+    public boolean isTerminal = false;
     public boolean isSettings = false;
 
     @FXML
@@ -44,6 +45,8 @@ public class JFlatController implements Initializable {
     public AnchorPane listPane;
     @FXML
     public AnchorPane webPane;
+    @FXML
+    public AnchorPane settingsPane;
     @FXML
     public ListView<String> wordsList;
     @FXML
@@ -74,6 +77,8 @@ public class JFlatController implements Initializable {
     public Button favoriteMenuBTN;
     @FXML
     public Button translateMenuBTN;
+    @FXML
+    public Button terminalMenuBTN;
     @FXML
     public Button settingsMenuBTN;
 
@@ -154,12 +159,11 @@ public class JFlatController implements Initializable {
         if (isAV) {
             dictDB.deleteEngWord(selectedWord);
             dictDB.listAV(words);
-            wordsList.setItems(words);
         } else {
             dictDB.deleteVieWord(selectedWord);
             dictDB.listVA(words);
-            wordsList.setItems(words);
         }
+        wordsList.setItems(words);
         System.gc();
     }
 
@@ -266,6 +270,7 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isFav = true;
         isSettings = false;
+        isTerminal = false;
 
         defView.getEngine().loadContent("");
 
@@ -284,6 +289,7 @@ public class JFlatController implements Initializable {
         isHome = false;
         isFav = false;
         isHistory = false;
+        isTerminal = false;
         isSettings = false;
 
         if (!isTranslate) {
@@ -294,10 +300,23 @@ public class JFlatController implements Initializable {
         }
     }
 
+    public void handleTerminalMenuBTN() {
+        isHome = false;
+        isFav = false;
+        isHistory = false;
+        isTranslate = false;
+        isSettings = false;
+
+        if(!isTerminal) {
+            isTerminal = true;
+        }
+    }
+
     public void handleSettingsMenuBTN() {
         isHome = false;
         isTranslate = false;
         isHistory = false;
+        isTerminal = false;
 
         if (!isSettings) {
             autoCompleteField.setVisible(false);

@@ -29,7 +29,7 @@
       </Button>
       <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="567.0" prefWidth="198.0">
          <children>
-            <Button fx:id="homeMenuBTN" layoutX="27.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleHomeMenuBTN" text="Home" textFill="WHITE">
+            <Button fx:id="homeMenuBTN" layoutX="27.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleHomeMenuBTN" text="Home" textFill="WHITE">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-home" iconSize="25" />
                </graphic>
@@ -37,7 +37,7 @@
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="favoriteMenuBTN" layoutX="27.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleFavoriteMenuBTN" text="Favorite" textFill="WHITE">
+            <Button fx:id="favoriteMenuBTN" layoutX="27.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleFavoriteMenuBTN" text="Favorite" textFill="WHITE">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-heart" iconSize="25" />
                </graphic>
@@ -45,7 +45,7 @@
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="translateMenuBTN" layoutX="27.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleTranslateMenuBTN" onMouseClicked="#handleTranslateMenuBTN" text="Translate" textFill="WHITE">
+            <Button fx:id="translateMenuBTN" layoutX="27.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleTranslateMenuBTN" onMouseClicked="#handleTranslateMenuBTN" text="Translate" textFill="WHITE">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-copy" iconSize="27" />
                </graphic>
@@ -53,9 +53,17 @@
                   <Font name="Montserrat SemiBold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="settingsMenuBTN" layoutX="27.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#handleSettingsMenuBTN" text="Settings" textFill="WHITE">
+            <Button fx:id="settingsMenuBTN" layoutX="27.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#handleSettingsMenuBTN" text="Settings" textFill="WHITE">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-settings" iconSize="25" />
+               </graphic>
+               <font>
+                  <Font name="Montserrat SemiBold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="terminalMenuBTN" layoutX="27.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleTerminalMenuBTN" text="Terminal" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-desktop" iconSize="25" />
                </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
@@ -104,6 +112,11 @@
                   <FontIcon fontSmoothingType="LCD" iconLiteral="ion4-ios-volume-high" iconSize="30" />
                </graphic>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="settingsPane" layoutX="222.0" layoutY="46.0" prefHeight="502.0" prefWidth="723.0" visible="false">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="696.0" text="Dark Mode" />
          </children>
       </AnchorPane>
    </children>
