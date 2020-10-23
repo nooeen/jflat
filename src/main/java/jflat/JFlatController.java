@@ -26,12 +26,15 @@ public class JFlatController implements Initializable {
     public ObservableList<String> words = FXCollections.observableArrayList();
     public ObservableList<String> favWords = FXCollections.observableArrayList();
 
+    public boolean isDark = true;
+
     public boolean isAV = true;
+
+    public boolean isHome = true;
     public boolean isFav = false;
     public boolean isHistory = false;
-    public boolean isDark = true;
-    public boolean isHome = true;
     public boolean isTranslate = false;
+    public boolean isSettings = false;
 
     @FXML
     public AnchorPane dynamicPane;
@@ -209,7 +212,10 @@ public class JFlatController implements Initializable {
         isTranslate = false;
         isHistory = false;
         isFav = false;
+        isSettings = false;
+
         if (!isHome) {
+            autoCompleteField.setVisible(true);
             webPane.setVisible(true);
             listPane.setVisible(true);
             isHome = true;
@@ -227,7 +233,10 @@ public class JFlatController implements Initializable {
         isTranslate = false;
         isHistory = false;
         isFav = true;
+        isSettings = false;
+
         if (!isHome) {
+            autoCompleteField.setVisible(true);
             webPane.setVisible(true);
             listPane.setVisible(true);
             isHome = true;
@@ -239,7 +248,12 @@ public class JFlatController implements Initializable {
 
     public void handleTranslateMenuBTN() {
         isHome = false;
+        isFav = false;
+        isHistory = false;
+        isSettings = false;
+
         if(!isTranslate) {
+            autoCompleteField.setVisible(true);
             webPane.setVisible(false);
             listPane.setVisible(false);
             isTranslate = true;
@@ -251,6 +265,11 @@ public class JFlatController implements Initializable {
         isTranslate = false;
         isHistory = false;
 
+        if(!isSettings) {
+            autoCompleteField.setVisible(false);
+            listPane.setVisible(false);
+            webPane.setVisible(false);
+        }
     }
 
     @Override
