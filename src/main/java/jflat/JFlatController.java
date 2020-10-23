@@ -32,12 +32,13 @@ public class JFlatController implements Initializable {
     public boolean isDark = true;
     public boolean isHome = true;
     public boolean isTranslate = false;
-    public boolean inited = false;
 
     @FXML
     public AnchorPane dynamicPane;
     @FXML
     public AnchorPane menuPane;
+    @FXML
+    public AnchorPane listPane;
     @FXML
     public AnchorPane webPane;
     @FXML
@@ -209,7 +210,8 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isFav = false;
         if (!isHome) {
-
+            webPane.setVisible(true);
+            listPane.setVisible(true);
             isHome = true;
         }
 
@@ -226,7 +228,8 @@ public class JFlatController implements Initializable {
         isHistory = false;
         isFav = true;
         if (!isHome) {
-
+            webPane.setVisible(true);
+            listPane.setVisible(true);
             isHome = true;
         }
 
@@ -237,7 +240,8 @@ public class JFlatController implements Initializable {
     public void handleTranslateMenuBTN() {
         isHome = false;
         if(!isTranslate) {
-
+            webPane.setVisible(false);
+            listPane.setVisible(false);
             isTranslate = true;
         }
     }
@@ -251,11 +255,8 @@ public class JFlatController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(!inited) {
-            initWordsList();
-            switchUI(isDark);
-            inited = true;
-        }
+        initWordsList();
+        switchUI(isDark);
     }
 
 
