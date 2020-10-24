@@ -27,7 +27,12 @@
     -fx-text-fill: white;
 }
 
+#terminalPane .tab-pane .tab {
+    -fx-background-color: transparent;
+}
+
 #menuPane {
+    -fx-border-width: 2;
     -fx-background-color: rgb(47, 48, 48);
     -fx-border-radius: 30 30 30 30;
     -fx-background-radius: 30 30 30 30;

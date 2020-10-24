@@ -1,5 +1,8 @@
 package jflat;
 
+import com.kodedu.terminalfx.TerminalBuilder;
+import com.kodedu.terminalfx.TerminalTab;
+import com.kodedu.terminalfx.config.TerminalConfig;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -124,6 +128,16 @@ public class JFlatController implements Initializable {
         addUpdatePane.setVisible(false);
         translatePane.setVisible(false);
         terminalPane.setVisible(false);
+    }
+
+    public void initTerminal() {
+        terminalPane.setVisible(false);
+        TerminalConfig config = new TerminalConfig();
+        config.setBackgroundColor(Color.rgb(29,29,29));
+        config.setForegroundColor(Color.WHITE);
+        TerminalBuilder terminalBuilder = new TerminalBuilder(config);
+        TerminalTab terminal = terminalBuilder.newTerminal();
+        terminalPane.getTabs().add(terminal);
     }
 
     @FXML
@@ -480,6 +494,7 @@ public class JFlatController implements Initializable {
         statusReset();
         invisibleAll();
 
+        terminalPane.setVisible(true);
         isTerminal = true;
     }
 
@@ -494,6 +509,7 @@ public class JFlatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initWordsList();
+        initTerminal();
         switchUI(isDark);
         try {
             tts.mp3("en-US", "Welcome to JFlat!");
