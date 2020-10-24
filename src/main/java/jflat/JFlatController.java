@@ -146,6 +146,11 @@ public class JFlatController implements Initializable {
             }
             return;
         } else if (isHistory) {
+            if(dictDB.getEngDef(selectedWord) != "") {
+                defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
+            } else {
+                defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
+            }
             return;
         }
 
@@ -203,6 +208,34 @@ public class JFlatController implements Initializable {
         autoCompleteField.setVisible(true);
         autoCompleteField.setPromptText("Add/Update Words...");
         addUpdatePane.setVisible(true);
+        addUpdateEditor.setHtmlText("<h1>[Word's name]</h1>\n" +
+                "<h3><i>[Pronounciation]</i></h3>\n" +
+                "\n" +
+                "<h2>[Word's type 1]</h2>\n" +
+                "<ul>\n" +
+                "    <li>[Meaning1]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example]:<i> [Vietnamese Example]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "    <li>[Meaning2]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example1]:<i> [Vietnamese Example1]</i></li>\n" +
+                "            <li>[English Example2]:<i> [Vietnamese Example2]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "</ul>\n" +
+                "\n" +
+                "<h2>[Word's type 2]</h2>\n" +
+                "<ul>\n" +
+                "    <li>[Meaning1]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example]:<i> [Vietnamese Example]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "    <li>[Meaning2]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example1]:<i> [Vietnamese Example1]</i></li>\n" +
+                "            <li>[English Example2]:<i> [Vietnamese Example2]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "</ul>");
         isAddUpdate = true;
     }
 
@@ -214,7 +247,21 @@ public class JFlatController implements Initializable {
         autoCompleteField.setVisible(true);
         autoCompleteField.setPromptText("Add/Update Words...");
         addUpdatePane.setVisible(true);
+        String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        addUpdateField.setText(selectedWord);
         isAddUpdate = true;
+        if (isFav) {
+            addUpdateEditor.setHtmlText(dictDB.getFavDef(selectedWord));
+        }
+        if (isAV) {
+            addUpdateEditor.setHtmlText(dictDB.getEngDef(selectedWord));
+        } else {
+            addUpdateEditor.setHtmlText(dictDB.getVieDef(selectedWord));
+        }
     }
 
     @FXML
@@ -428,6 +475,15 @@ public class JFlatController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initWordsList();
         switchUI(isDark);
+        try {
+            tts.mp3("en-US", "Welcome to JFlat!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(output);
+        mediaPlayer.seek(mediaPlayer.getStartTime());
+        mediaPlayer.play();
     }
 
 
