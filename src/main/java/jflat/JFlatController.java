@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -55,13 +56,21 @@ public class JFlatController implements Initializable {
     @FXML
     public WebView defView;
     @FXML
+    public HTMLEditor addUpdateEditor;
+    @FXML
     public TextField autoCompleteField;
+    @FXML
+    public TextField addUpdateField;
     @FXML
     public Button favBTN;
     @FXML
     public Button switchBTN;
     @FXML
     public Button ttsBTN;
+    @FXML
+    public Button backBTNEditor;
+    @FXML
+    public Button saveBTNEditor;
     @FXML
     public Button addBTN;
     @FXML
@@ -173,7 +182,12 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void addWord() {
-        statusReset();
+        if(isFav) {
+            statusReset();
+            isFav = true;
+        } else {
+            statusReset();
+        }
         invisibleAll();
 
         autoCompleteField.setVisible(true);
@@ -285,6 +299,19 @@ public class JFlatController implements Initializable {
     public void handleMinimizeBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    public void handleBackBTNOfHTMLEditor() {
+        if(isFav) {
+            handleFavoriteMenuBTN();
+            return;
+        }
+        handleHomeMenuBTN();
+    }
+
+    public void handleSaveBTNOfHTMLEditor() {
+        
+        handleBackBTNOfHTMLEditor();
     }
 
     public void switchUI(boolean isDark) {

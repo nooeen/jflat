@@ -130,18 +130,18 @@
       </AnchorPane>
       <AnchorPane fx:id="addUpdatePane" layoutX="222.0" layoutY="49.0" prefHeight="530.0" prefWidth="723.0" visible="false">
          <children>
-            <Button layoutX="665.0" layoutY="488.0" mnemonicParsing="false" text="Save">
+            <Button fx:id="saveBTNEditor" layoutX="665.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleSaveBTNOfHTMLEditor" text="Save">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-add" iconSize="16" />
                </graphic>
             </Button>
-            <Button layoutX="609.0" layoutY="488.0" mnemonicParsing="false" text="Back">
+            <Button fx:id="backBTNEditor" layoutX="609.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleBackBTNOfHTMLEditor" text="Back">
                <graphic>
                   <FontIcon iconLiteral="ion4-ios-arrow-back" iconSize="16" />
                </graphic>
             </Button>
-            <TextField fx:id="autoCompleteField1" layoutY="7.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="723.0" promptText="Word..." />
-            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutY="53.0" prefHeight="435.0" prefWidth="723.0" />
+            <TextField fx:id="addUpdateField" layoutY="7.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="723.0" promptText="Word..." />
+            <HTMLEditor fx:id="addUpdateEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutY="53.0" prefHeight="435.0" prefWidth="723.0" />
          </children>
       </AnchorPane>
    </children>

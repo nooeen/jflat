@@ -47,6 +47,46 @@
     -fx-border-radius: 20;
 }
 
+#addUpdateField {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(47, 48, 48);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+#addUpdateEditor{
+    background: rgb(47, 48, 48);
+    -fx-background-color: rgb(47,48,48);
+    -fx-border-color: rgb(47,48,48);
+    -fx-border-radius: 20;
+    -fx-border-width: 2;
+}
+
+#addUpdatePane .button,  #addUpdatePane .toggle-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #828282;
+}
+
+#addUpdatePane .button:hover,  #addUpdatePane .toggle-button:hover {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: rgb(230, 227, 220);
+}
+
+#addUpdatePane .button {
+    -fx-text-fill: white;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-font-weight: 100;
+    -fx-font-size: 13;
+}
+
 #defView {
     -fx-background-color: transparent;
 }
