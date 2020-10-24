@@ -72,7 +72,7 @@
             </Button>
             <Button fx:id="historyMenuBTN" layoutX="26.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleHistoryMenuBTN" text="History" textFill="WHITE">
                <graphic>
-                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-apps" iconSize="25" />
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-apps" iconSize="27" />
                </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />

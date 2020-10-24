@@ -271,10 +271,15 @@ public class JFlatController implements Initializable {
         sb.deleteCharAt(0);
         sb.deleteCharAt(sb.length() - 1);
         selectedWord = sb.toString();
+        if (isHistory) {
+            historyWords.remove(selectedWord);
+            wordsList.setItems(historyWords);
+            return;
+        }
         if (isFav) {
             dictDB.deleteFavWord(selectedWord);
-            dictDB.listFav(words);
-            wordsList.setItems(words);
+            dictDB.listFav(favWords);
+            wordsList.setItems(favWords);
             System.gc();
             return;
         }
