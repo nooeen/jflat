@@ -151,14 +151,11 @@ public class JFlatController implements Initializable {
 
         if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
-            if(!historyWords.contains(selectedWord)) {
-                historyWords.add(selectedWord);
-            }
         } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
-            if(!historyWords.contains(selectedWord)) {
-                historyWords.add(selectedWord);
-            }
+        }
+        if(!historyWords.contains(selectedWord)) {
+            historyWords.add(selectedWord);
         }
         System.gc();
     }
