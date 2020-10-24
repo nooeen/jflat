@@ -31,10 +31,14 @@ public class Trie {
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) { // apple
-            if (cur.children[c] == null) {
-                cur.children[c] = new TrieNode();
+            // if (cur.children[c] == null) {
+            //     cur.children[c] = new TrieNode();
+            // }
+            if (!cur.children.containsKey(c)) {
+                cur.children.put(c, new TrieNode());
             }
-            cur = cur.children[c];
+            // cur = cur.children[c];
+            cur = cur.children.get(c);
             cur.words.add(word);
         }
         cur.isWord = true;
@@ -48,10 +52,14 @@ public class Trie {
     public boolean search(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            if(cur.children[c] == null) {
+            // if(cur.children[c] == null) {
+            //     return false;
+            // }
+            // cur = cur.children[c];
+            if(!cur.children.containsKey(c)) {
                 return false;
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
         return cur.isWord;
     }
@@ -64,10 +72,14 @@ public class Trie {
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            if(cur.children[c] == null ) {
+            // if(cur.children[c] == null ) {
+            //     return false;
+            // }
+            // cur = cur.children[c];
+            if(!cur.children.containsKey(c)) {
                 return false;
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
 
         return true;
@@ -76,10 +88,15 @@ public class Trie {
     public List<String> findWords(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            if(cur.children[c] == null ) {
-                return new ArrayList<>(); // empty list
+            // if(cur.children[c] == null ) {
+            //     return new ArrayList<>(); // empty list
+            // }
+            // cur = cur.children[c];
+
+            if(!cur.children.containsKey(c)) {
+                return new ArrayList<>();
             }
-            cur = cur.children[c];
+            cur = cur.children.get(c);
         }
 
         return cur.words; // list of words at that node
