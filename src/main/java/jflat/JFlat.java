@@ -33,7 +33,6 @@ public class JFlat extends Application {
         primaryStage.setTitle("JFlat");
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-
         primaryStage.show();
     }
 

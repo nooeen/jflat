@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -25,27 +26,42 @@ public class JFlatController implements Initializable {
 
     public ObservableList<String> words = FXCollections.observableArrayList();
     public ObservableList<String> favWords = FXCollections.observableArrayList();
+    public ObservableList<String> historyWords = FXCollections.observableArrayList();
+
+    public boolean isDark = true;
 
     public boolean isAV = true;
+
+    public boolean isHome = true;
     public boolean isFav = false;
     public boolean isHistory = false;
-    public boolean isDark = true;
-    public boolean isHome = true;
     public boolean isTranslate = false;
-    public boolean inited = false;
+    public boolean isTerminal = false;
+    public boolean isSettings = false;
+    public boolean isAddUpdate = false;
 
     @FXML
     public AnchorPane dynamicPane;
     @FXML
     public AnchorPane menuPane;
     @FXML
+    public AnchorPane listPane;
+    @FXML
     public AnchorPane webPane;
+    @FXML
+    public AnchorPane settingsPane;
+    @FXML
+    public AnchorPane addUpdatePane;
     @FXML
     public ListView<String> wordsList;
     @FXML
     public WebView defView;
     @FXML
+    public HTMLEditor addUpdateEditor;
+    @FXML
     public TextField autoCompleteField;
+    @FXML
+    public TextField addUpdateField;
     @FXML
     public Button favBTN;
     @FXML
@@ -53,7 +69,13 @@ public class JFlatController implements Initializable {
     @FXML
     public Button ttsBTN;
     @FXML
+    public Button backBTNEditor;
+    @FXML
+    public Button saveBTNEditor;
+    @FXML
     public Button addBTN;
+    @FXML
+    public Button updateBTN;
     @FXML
     public Button delBTN;
     @FXML
@@ -67,18 +89,46 @@ public class JFlatController implements Initializable {
     @FXML
     public Button favoriteMenuBTN;
     @FXML
+    public Button historyMenuBTN;
+    @FXML
     public Button translateMenuBTN;
+    @FXML
+    public Button terminalMenuBTN;
     @FXML
     public Button settingsMenuBTN;
 
+    public void statusReset() {
+        isHome = false;
+        isFav = false;
+        isHistory = false;
+        isTranslate = false;
+        isTerminal = false;
+        isSettings = false;
+        isAddUpdate = false;
+    }
+
+    public void invisibleAll() {
+        autoCompleteField.setVisible(false);
+        listPane.setVisible(false);
+        webPane.setVisible(false);
+        settingsPane.setVisible(false);
+        addUpdatePane.setVisible(false);
+    }
+
     @FXML
     public void initWordsList() {
-        dictDB.listAV(words);
+        if (isAV) {
+            dictDB.listAV(words);
+        } else {
+            dictDB.listVA(words);
+        }
         wordsList.setItems(words);
     }
 
     @FXML
     public void getWordDef() {
+        ttsBTN.setVisible(true);
+
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
 
@@ -91,8 +141,16 @@ public class JFlatController implements Initializable {
 
         if (isFav) {
             defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
+            if(!historyWords.contains(selectedWord)) {
+                historyWords.add(selectedWord);
+            }
             return;
         } else if (isHistory) {
+            if(dictDB.getEngDef(selectedWord) != "") {
+                defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
+            } else {
+                defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
+            }
             return;
         }
 
@@ -101,6 +159,9 @@ public class JFlatController implements Initializable {
         } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
         }
+        if(!historyWords.contains(selectedWord)) {
+            historyWords.add(selectedWord);
+        }
         System.gc();
     }
 
@@ -108,6 +169,9 @@ public class JFlatController implements Initializable {
     public void getSelectedWordDef(String selectedWord) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
+        }
+        if (isFav) {
+            defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
         }
         if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
@@ -128,13 +192,92 @@ public class JFlatController implements Initializable {
             wordsList.setItems(words);
             isAV = true;
         }
-
         System.gc();
+    }
+
+    @FXML
+    public void addWord() {
+        if(isFav) {
+            statusReset();
+            isFav = true;
+        } else {
+            statusReset();
+        }
+        invisibleAll();
+
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Add/Update Words...");
+        addUpdatePane.setVisible(true);
+        addUpdateEditor.setHtmlText("<h1>[Word's name]</h1>\n" +
+                "<h3><i>[Pronounciation]</i></h3>\n" +
+                "\n" +
+                "<h2>[Word's type 1]</h2>\n" +
+                "<ul>\n" +
+                "    <li>[Meaning1]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example]:<i> [Vietnamese Example]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "    <li>[Meaning2]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example1]:<i> [Vietnamese Example1]</i></li>\n" +
+                "            <li>[English Example2]:<i> [Vietnamese Example2]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "</ul>\n" +
+                "\n" +
+                "<h2>[Word's type 2]</h2>\n" +
+                "<ul>\n" +
+                "    <li>[Meaning1]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example]:<i> [Vietnamese Example]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "    <li>[Meaning2]<ul style=\"list-style-type:circle\">\n" +
+                "            <li>[English Example1]:<i> [Vietnamese Example1]</i></li>\n" +
+                "            <li>[English Example2]:<i> [Vietnamese Example2]</i></li>\n" +
+                "        </ul>\n" +
+                "    </li>\n" +
+                "</ul>");
+        isAddUpdate = true;
+    }
+
+    @FXML
+    public void updateWord() {
+        statusReset();
+        invisibleAll();
+
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Add/Update Words...");
+        addUpdatePane.setVisible(true);
+        String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        addUpdateField.setText(selectedWord);
+        isAddUpdate = true;
+        if (isFav) {
+            addUpdateEditor.setHtmlText(dictDB.getFavDef(selectedWord));
+        }
+        if (isAV) {
+            addUpdateEditor.setHtmlText(dictDB.getEngDef(selectedWord));
+        } else {
+            addUpdateEditor.setHtmlText(dictDB.getVieDef(selectedWord));
+        }
     }
 
     @FXML
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+        StringBuilder sb = new StringBuilder(selectedWord);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(sb.length() - 1);
+        selectedWord = sb.toString();
+        if (isFav) {
+            dictDB.deleteFavWord(selectedWord);
+            dictDB.listFav(words);
+            wordsList.setItems(words);
+            System.gc();
+            return;
+        }
         if (isAV) {
             dictDB.deleteEngWord(selectedWord);
             dictDB.listAV(words);
@@ -142,11 +285,21 @@ public class JFlatController implements Initializable {
             dictDB.deleteVieWord(selectedWord);
             dictDB.listVA(words);
         }
+        wordsList.setItems(words);
         System.gc();
     }
 
     @FXML
     public void autoCompleteListener() {
+        if(isFav) {
+            dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
+            String selectedWord = "";
+            if (!favWords.isEmpty()) {
+                selectedWord = words.get(0);
+            }
+            getSelectedWordDef(selectedWord);
+            return;
+        }
         if (isAV) {
             dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
             String selectedWord = "";
@@ -188,6 +341,22 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    public void handleFavBTN() {
+        if (!isFav) {
+            String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
+            StringBuilder sb = new StringBuilder(selectedWord);
+            sb.deleteCharAt(0);
+            sb.deleteCharAt(sb.length() - 1);
+            selectedWord = sb.toString();
+            System.out.println(selectedWord);
+            String lang = "av";
+            if (!isAV) {
+                lang = "va";
+            }
+            dictDB.addFavWord(selectedWord, lang);
+        }
+    }
+
     public void handleCloseBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
@@ -198,6 +367,29 @@ public class JFlatController implements Initializable {
         stage.setIconified(true);
     }
 
+    public void handleBackBTNOfHTMLEditor() {
+        if(isFav) {
+            handleFavoriteMenuBTN();
+            return;
+        }
+        handleHomeMenuBTN();
+    }
+
+    public void handleSaveBTNOfHTMLEditor() {
+        String word = addUpdateField.getText();
+        String html = addUpdateEditor.getHtmlText();
+        String type;
+        if(isFav) {
+            type = "fav";
+        } else if(isAV) {
+            type = "av";
+        } else {
+            type = "va";
+        }
+        dictDB.addWord(word, html, type);
+        handleBackBTNOfHTMLEditor();
+    }
+
     public void switchUI(boolean isDark) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -205,64 +397,94 @@ public class JFlatController implements Initializable {
     }
 
     public void handleHomeMenuBTN() {
-        isTranslate = false;
-        isHistory = false;
-        isFav = false;
-        if (!isHome) {
+        statusReset();
+        ttsBTN.setVisible(false);
+        defView.getEngine().loadContent("");
 
+        if (!isHome) {
+            invisibleAll();
+            autoCompleteField.setVisible(true);
+            autoCompleteField.setPromptText("Search...");
+            webPane.setVisible(true);
+            listPane.setVisible(true);
             isHome = true;
         }
 
-        if (isAV) {
-            dictDB.listAV(words);
-        } else {
-            dictDB.listVA(words);
-        }
-        wordsList.setItems(words);
+        initWordsList();
     }
 
     public void handleFavoriteMenuBTN() {
-        isTranslate = false;
-        isHistory = false;
+        statusReset();
+        invisibleAll();
+
+        isHome = true;
         isFav = true;
-        if (!isHome) {
-            isHome = true;
-        }
+
+        defView.getEngine().loadContent("");
+        ttsBTN.setVisible(false);
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        webPane.setVisible(true);
+        listPane.setVisible(true);
 
         dictDB.listFav(favWords);
         wordsList.setItems(favWords);
     }
 
+    public void handleHistoryMenuBTN() {
+        statusReset();
+        invisibleAll();
+
+        isHistory = true;
+
+        defView.getEngine().loadContent("");
+        ttsBTN.setVisible(false);
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        webPane.setVisible(true);
+        listPane.setVisible(true);
+
+        wordsList.setItems(historyWords);
+    }
 
     public void handleTranslateMenuBTN() {
-        isHome = false;
-        if(!isTranslate) {
+        statusReset();
+        invisibleAll();
 
-            isTranslate = true;
-        }
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        isTranslate = true;
+    }
+
+    public void handleTerminalMenuBTN() {
+        statusReset();
+        invisibleAll();
+
+        isTerminal = true;
     }
 
     public void handleSettingsMenuBTN() {
-        isHome = false;
-        isTranslate = false;
-        isHistory = false;
+        statusReset();
+        invisibleAll();
 
+        settingsPane.setVisible(true);
+        isSettings = true;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(!inited) {
-            initWordsList();
-            switchUI(isDark);
-            inited = true;
+        initWordsList();
+        switchUI(isDark);
+        try {
+            tts.mp3("en-US", "Welcome to JFlat!");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        Media output = new Media(new File("ttsOutput.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(output);
+        mediaPlayer.seek(mediaPlayer.getStartTime());
+        mediaPlayer.play();
     }
 
-    public void handleFavoriteBTN() {
-        String a = new String();
-        a = wordsList.getSelectionModel().getSelectedItems().toString();
-        dictDB.addFavWord(a, true);
-
-    }
 
 }

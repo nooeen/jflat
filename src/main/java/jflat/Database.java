@@ -6,19 +6,12 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class Database {
-    /**
-     * connect to the dictionary's database
-     *
-     * @return the Connection object
-     */
     private Connection connect() {
-        // SQLite connection string
         String url = "jdbc:sqlite:dictDB.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
         return conn;
     }
@@ -31,7 +24,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 words.add(rs.getString("word"));
             }
@@ -48,7 +40,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 words.add(rs.getString("word"));
             }
@@ -65,9 +56,23 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 favWords.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void listAutoCompleteFav(ObservableList<String> words, String selectedWord) {
+        words.clear();
+        String sql = "SELECT word FROM fav WHERE word LIKE " + "'" + selectedWord + "%'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while (rs.next()) {
+                words.add(rs.getString("word"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -95,7 +100,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 words.add(rs.getString("word"));
             }
@@ -110,7 +114,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 def = rs.getString("html");
             }
@@ -126,7 +129,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 def = rs.getString("html");
             }
@@ -142,7 +144,6 @@ public class Database {
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            // loop through the result set
             while (rs.next()) {
                 def = rs.getString("html");
             }
@@ -152,12 +153,27 @@ public class Database {
         return def;
     }
 
-    public void addEngWord() {
-
+    public void addFavWord(String selectedWord, String lang) {
+        String sql = "INSERT INTO fav SELECT * FROM " + lang + " WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+            stmt.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void addVieWord() {
+    public void addWord(String word, String html, String type) {
+        String sql = "INSERT INTO " + type + " (word,html) VALUES(?,?)";
 
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, word);
+            pstmt.setString(2, html);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public String getVieDes(String selectedWord) {
         String def = "";
@@ -289,7 +305,7 @@ public class Database {
         String sql = "DELETE FROM av WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();) {
-                stmt.executeQuery(sql);
+                stmt.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -299,7 +315,17 @@ public class Database {
         String sql = "DELETE FROM va WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();) {
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteFavWord(String selectedWord) {
+        String sql = "DELETE FROM fav WHERE word LIKE " + "'" + selectedWord + "'";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();) {
+            stmt.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

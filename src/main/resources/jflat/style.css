@@ -49,6 +49,18 @@
     -fx-border-radius: 20;
 }
 
+#addUpdateField {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+#addUpdatePane .button{
+    -fx-text-fill: white;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
+}
+
 .wordsListView {
     -fx-font-smoothing-type: lcd;
     -fx-background-radius: 20;
