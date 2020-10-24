@@ -158,6 +158,9 @@ public class JFlatController implements Initializable {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         }
+        if (isFav) {
+            defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
+        }
         if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
         } else {
@@ -234,6 +237,15 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void autoCompleteListener() {
+        if(isFav) {
+            dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
+            String selectedWord = "";
+            if (!favWords.isEmpty()) {
+                selectedWord = words.get(0);
+            }
+            getSelectedWordDef(selectedWord);
+            return;
+        }
         if (isAV) {
             dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
             String selectedWord = "";
@@ -310,7 +322,17 @@ public class JFlatController implements Initializable {
     }
 
     public void handleSaveBTNOfHTMLEditor() {
-        
+        String word = addUpdateField.getText();
+        String html = addUpdateEditor.getHtmlText();
+        String type = "";
+        if(isFav) {
+            type = "fav";
+        } else if(isAV) {
+            type = "av";
+        } else {
+            type = "va";
+        }
+        dictDB.addWord(word, html, type);
         handleBackBTNOfHTMLEditor();
     }
 
