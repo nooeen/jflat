@@ -36,6 +36,7 @@ public class JFlatController implements Initializable {
     public boolean isTranslate = false;
     public boolean isTerminal = false;
     public boolean isSettings = false;
+    public boolean isAddUpdate = false;
 
     @FXML
     public AnchorPane dynamicPane;
@@ -47,6 +48,8 @@ public class JFlatController implements Initializable {
     public AnchorPane webPane;
     @FXML
     public AnchorPane settingsPane;
+    @FXML
+    public AnchorPane addUpdatePane;
     @FXML
     public ListView<String> wordsList;
     @FXML
@@ -76,20 +79,46 @@ public class JFlatController implements Initializable {
     @FXML
     public Button favoriteMenuBTN;
     @FXML
+    public Button historyMenuBTN;
+    @FXML
     public Button translateMenuBTN;
     @FXML
     public Button terminalMenuBTN;
     @FXML
     public Button settingsMenuBTN;
 
+    public void statusReset() {
+        isHome = false;
+        isFav = false;
+        isHistory = false;
+        isTranslate = false;
+        isTerminal = false;
+        isSettings = false;
+        isAddUpdate = false;
+    }
+
+    public void invisibleAll() {
+        autoCompleteField.setVisible(false);
+        listPane.setVisible(false);
+        webPane.setVisible(false);
+        settingsPane.setVisible(false);
+        addUpdatePane.setVisible(false);
+    }
+
     @FXML
     public void initWordsList() {
-        dictDB.listAV(words);
+        if (isAV) {
+            dictDB.listAV(words);
+        } else {
+            dictDB.listVA(words);
+        }
         wordsList.setItems(words);
     }
 
     @FXML
     public void getWordDef() {
+        ttsBTN.setVisible(true);
+
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
 
@@ -144,7 +173,24 @@ public class JFlatController implements Initializable {
 
     @FXML
     public void addWord() {
-        return;
+        statusReset();
+        invisibleAll();
+
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Add/Update Words...");
+        addUpdatePane.setVisible(true);
+        isAddUpdate = true;
+    }
+
+    @FXML
+    public void updateWord() {
+        statusReset();
+        invisibleAll();
+
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Add/Update Words...");
+        addUpdatePane.setVisible(true);
+        isAddUpdate = true;
     }
 
     @FXML
@@ -248,86 +294,69 @@ public class JFlatController implements Initializable {
     }
 
     public void handleHomeMenuBTN() {
-        isTranslate = false;
-        isHistory = false;
-        isFav = false;
-        isSettings = false;
-
+        statusReset();
+        ttsBTN.setVisible(false);
         defView.getEngine().loadContent("");
 
         if (!isHome) {
+            invisibleAll();
             autoCompleteField.setVisible(true);
+            autoCompleteField.setPromptText("Search...");
             webPane.setVisible(true);
             listPane.setVisible(true);
             isHome = true;
         }
 
-        if (isAV) {
-            dictDB.listAV(words);
-        } else {
-            dictDB.listVA(words);
-        }
-        wordsList.setItems(words);
+        initWordsList();
     }
 
     public void handleFavoriteMenuBTN() {
-        isTranslate = false;
-        isHistory = false;
+        statusReset();
+        invisibleAll();
+
+        isHome = true;
         isFav = true;
-        isSettings = false;
-        isTerminal = false;
 
         defView.getEngine().loadContent("");
-
-        if (!isHome) {
-            autoCompleteField.setVisible(true);
-            webPane.setVisible(true);
-            listPane.setVisible(true);
-            isHome = true;
-        }
+        ttsBTN.setVisible(false);
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        webPane.setVisible(true);
+        listPane.setVisible(true);
 
         dictDB.listFav(favWords);
         wordsList.setItems(favWords);
     }
 
-    public void handleTranslateMenuBTN() {
-        isHome = false;
-        isFav = false;
-        isHistory = false;
-        isTerminal = false;
-        isSettings = false;
+    public void handleHistoryMenuBTN() {
+        statusReset();
+        invisibleAll();
 
-        if (!isTranslate) {
-            autoCompleteField.setVisible(true);
-            webPane.setVisible(false);
-            listPane.setVisible(false);
-            isTranslate = true;
-        }
+        isHistory = true;
+    }
+
+    public void handleTranslateMenuBTN() {
+        statusReset();
+        invisibleAll();
+
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        isTranslate = true;
     }
 
     public void handleTerminalMenuBTN() {
-        isHome = false;
-        isFav = false;
-        isHistory = false;
-        isTranslate = false;
-        isSettings = false;
+        statusReset();
+        invisibleAll();
 
-        if(!isTerminal) {
-            isTerminal = true;
-        }
+        isTerminal = true;
     }
 
     public void handleSettingsMenuBTN() {
-        isHome = false;
-        isTranslate = false;
-        isHistory = false;
-        isTerminal = false;
+        statusReset();
+        invisibleAll();
 
-        if (!isSettings) {
-            autoCompleteField.setVisible(false);
-            listPane.setVisible(false);
-            webPane.setVisible(false);
-        }
+        settingsPane.setVisible(true);
+        isSettings = true;
     }
 
     @Override
