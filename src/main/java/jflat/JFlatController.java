@@ -26,6 +26,7 @@ public class JFlatController implements Initializable {
 
     public ObservableList<String> words = FXCollections.observableArrayList();
     public ObservableList<String> favWords = FXCollections.observableArrayList();
+    public ObservableList<String> historyWords = FXCollections.observableArrayList();
 
     public boolean isDark = true;
 
@@ -324,7 +325,7 @@ public class JFlatController implements Initializable {
     public void handleSaveBTNOfHTMLEditor() {
         String word = addUpdateField.getText();
         String html = addUpdateEditor.getHtmlText();
-        String type = "";
+        String type;
         if(isFav) {
             type = "fav";
         } else if(isAV) {
@@ -382,6 +383,15 @@ public class JFlatController implements Initializable {
         invisibleAll();
 
         isHistory = true;
+
+        defView.getEngine().loadContent("");
+        ttsBTN.setVisible(false);
+        autoCompleteField.setVisible(true);
+        autoCompleteField.setPromptText("Search...");
+        webPane.setVisible(true);
+        listPane.setVisible(true);
+
+        wordsList.setItems(historyWords);
     }
 
     public void handleTranslateMenuBTN() {
