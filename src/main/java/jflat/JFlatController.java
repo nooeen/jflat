@@ -16,6 +16,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,6 +54,10 @@ public class JFlatController implements Initializable {
     @FXML
     public AnchorPane addUpdatePane;
     @FXML
+    public AnchorPane translatePane;
+    @FXML
+    public AnchorPane terminalPane;
+    @FXML
     public ListView<String> wordsList;
     @FXML
     public WebView defView;
@@ -62,6 +67,8 @@ public class JFlatController implements Initializable {
     public TextField autoCompleteField;
     @FXML
     public TextField addUpdateField;
+    @FXML
+    public TextField translateField;
     @FXML
     public Button favBTN;
     @FXML
@@ -109,10 +116,13 @@ public class JFlatController implements Initializable {
 
     public void invisibleAll() {
         autoCompleteField.setVisible(false);
+        translateField.setVisible(false);
         listPane.setVisible(false);
         webPane.setVisible(false);
         settingsPane.setVisible(false);
         addUpdatePane.setVisible(false);
+        translatePane.setVisible(false);
+        terminalPane.setVisible(false);
     }
 
     @FXML
@@ -146,7 +156,7 @@ public class JFlatController implements Initializable {
             }
             return;
         } else if (isHistory) {
-            if(dictDB.getEngDef(selectedWord) != "") {
+            if(!dictDB.getEngDef(selectedWord).equals("")) {
                 defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
             } else {
                 defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
@@ -395,6 +405,11 @@ public class JFlatController implements Initializable {
         handleBackBTNOfHTMLEditor();
     }
 
+    public void handleTranslateField() throws IOException {
+        GCloudTranslator.translateText("en-US", translateField.getText());
+        GCloudTranslator.translateText("vi-vn", translateField.getText());
+    }
+
     public void switchUI(boolean isDark) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -456,8 +471,7 @@ public class JFlatController implements Initializable {
         statusReset();
         invisibleAll();
 
-        autoCompleteField.setVisible(true);
-        autoCompleteField.setPromptText("Search...");
+        translateField.setVisible(true);
         isTranslate = true;
     }
 

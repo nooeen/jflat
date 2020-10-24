@@ -47,6 +47,13 @@
     -fx-border-radius: 20;
 }
 
+#translateField {
+    -fx-text-fill: white;
+    -fx-background-color: rgb(47, 48, 48);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
 #addUpdateField {
     -fx-text-fill: white;
     -fx-background-color: rgb(47, 48, 48);

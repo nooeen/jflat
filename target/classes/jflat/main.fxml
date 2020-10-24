@@ -13,6 +13,7 @@
 <AnchorPane fx:id="dynamicPane" prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
       <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Search..." />
+      <TextField fx:id="translateField" layoutX="222.0" layoutY="12.0" onAction="#handleTranslateField" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Translate..." visible="false" />
       <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
          <graphic>
             <FontIcon iconLiteral="mdi-close" iconSize="15" />
@@ -72,7 +73,7 @@
             </Button>
             <Button fx:id="historyMenuBTN" layoutX="26.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleHistoryMenuBTN" text="History" textFill="WHITE">
                <graphic>
-                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-apps" iconSize="25" />
+                  <FontIcon iconColor="WHITE" iconLiteral="ion4-ios-apps" iconSize="27" />
                </graphic>
                <font>
                   <Font name="Montserrat SemiBold" size="16.0" />
@@ -144,5 +145,7 @@
             <HTMLEditor fx:id="addUpdateEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutY="53.0" prefHeight="435.0" prefWidth="723.0" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="translatePane" layoutX="222.0" layoutY="49.0" prefHeight="524.0" prefWidth="723.0" visible="false" />
+      <AnchorPane fx:id="terminalPane" layoutX="222.0" layoutY="49.0" prefHeight="524.0" prefWidth="723.0" />
    </children>
 </AnchorPane>
