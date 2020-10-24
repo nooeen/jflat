@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -56,7 +57,7 @@ public class JFlatController implements Initializable {
     @FXML
     public AnchorPane translatePane;
     @FXML
-    public AnchorPane terminalPane;
+    public TabPane terminalPane;
     @FXML
     public ListView<String> wordsList;
     @FXML
