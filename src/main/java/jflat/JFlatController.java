@@ -3,19 +3,19 @@ package jflat;
 import com.kodedu.terminalfx.TerminalBuilder;
 import com.kodedu.terminalfx.TerminalTab;
 import com.kodedu.terminalfx.config.TerminalConfig;
+import io.github.firemaples.language.Language;
+import io.github.firemaples.translate.Translate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -35,7 +35,7 @@ public class JFlatController implements Initializable {
     public ObservableList<String> favWords = FXCollections.observableArrayList();
     public ObservableList<String> historyWords = FXCollections.observableArrayList();
 
-    public boolean isDark = true;
+    public boolean isDark = false;
 
     public boolean isAV = true;
 
@@ -76,6 +76,14 @@ public class JFlatController implements Initializable {
     @FXML
     public TextField translateField;
     @FXML
+    public TextArea engTrans;
+    @FXML
+    public TextArea vieTrans;
+    @FXML
+    public Text engTransText;
+    @FXML
+    public Text vieTransText;
+    @FXML
     public Button favBTN;
     @FXML
     public Button switchBTN;
@@ -110,7 +118,6 @@ public class JFlatController implements Initializable {
     @FXML
     public Button settingsMenuBTN;
 
-    @FXML
     public void statusReset() {
         isHome = false;
         isFav = false;
@@ -121,7 +128,6 @@ public class JFlatController implements Initializable {
         isAddUpdate = false;
     }
 
-    @FXML
     public void invisibleAll() {
         autoCompleteField.setVisible(false);
         translateField.setVisible(false);
@@ -133,18 +139,22 @@ public class JFlatController implements Initializable {
         terminalPane.setVisible(false);
     }
 
-    @FXML
     public void initTerminal() {
         terminalPane.setVisible(false);
         TerminalConfig config = new TerminalConfig();
-        config.setBackgroundColor(Color.rgb(29,29,29));
-        config.setForegroundColor(Color.WHITE);
+        if(isDark) {
+            config.setBackgroundColor(Color.rgb(29,29,29));
+            config.setForegroundColor(Color.WHITE);
+        } else {
+            config.setBackgroundColor(Color.WHITE);
+            config.setForegroundColor(Color.BLACK);
+        }
+
         TerminalBuilder terminalBuilder = new TerminalBuilder(config);
         TerminalTab terminal = terminalBuilder.newTerminal();
         terminalPane.getTabs().add(terminal);
     }
 
-    @FXML
     public void initWordsList() {
         if (isAV) {
             dictDB.listAV(words);
@@ -154,14 +164,15 @@ public class JFlatController implements Initializable {
         wordsList.setItems(words);
     }
 
-    @FXML
     public void getRandomDef() {
         ttsBTN.setVisible(true);
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         }
+
         Random rand = new Random();
         String selectedWord = words.get(rand.nextInt(words.size()));
+        wordsList.getSelectionModel().select(selectedWord);
 
         if(!historyWords.contains(selectedWord)) {
             historyWords.add(selectedWord);
@@ -169,11 +180,9 @@ public class JFlatController implements Initializable {
         defView.getEngine().loadContent(dictDB.getEngDef(selectedWord)
                         + "<p></p>"
                         + "<p style=\"text-align: center; \">~Word Of The Day~</p>", "text/html");
-        System.out.println(selectedWord);
         System.gc();
     }
 
-    @FXML
     public void getWordDef() {
         ttsBTN.setVisible(true);
 
@@ -213,13 +222,16 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
-    @FXML
     public void getSelectedWordDef(String selectedWord) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         }
+        if (isTranslate) {
+            defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
+        }
         if (isFav) {
             defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
+            return;
         }
         if (isAV) {
             defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
@@ -229,7 +241,6 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
-    @FXML
     public void switchDict() {
         if (isAV) {
             dictDB.listVA(words);
@@ -243,7 +254,6 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
-    @FXML
     public void addWord() {
         if(isFav) {
             statusReset();
@@ -287,7 +297,6 @@ public class JFlatController implements Initializable {
         isAddUpdate = true;
     }
 
-    @FXML
     public void updateWord() {
         statusReset();
         invisibleAll();
@@ -316,7 +325,6 @@ public class JFlatController implements Initializable {
 
     }
 
-    @FXML
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
         StringBuilder sb = new StringBuilder(selectedWord);
@@ -346,7 +354,6 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
-    @FXML
     public void autoCompleteListener() {
         if(isFav) {
             dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
@@ -375,7 +382,6 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
-    @FXML
     public void ttsPlay() throws Exception {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
         StringBuilder sb = new StringBuilder(selectedWord);
@@ -447,15 +453,21 @@ public class JFlatController implements Initializable {
         handleBackBTNOfHTMLEditor();
     }
 
-    public void handleTranslateField() throws IOException {
-        GCloudTranslator.translateText("en-US", translateField.getText());
-        GCloudTranslator.translateText("vi-vn", translateField.getText());
+    public void handleTranslateField() throws Exception {
+        String GCloudEng = GCloudTranslator.translateText("en-US", translateField.getText());
+        String GCloudVie = GCloudTranslator.translateText("vi-vn", translateField.getText());
+
+        engTrans.setText(GCloudEng);
+        vieTrans.setText(GCloudVie);
     }
 
     public void switchUI(boolean isDark) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
+        } else {
+
         }
+        initTerminal();
     }
 
     public void handleHomeMenuBTN() {
@@ -513,7 +525,10 @@ public class JFlatController implements Initializable {
         statusReset();
         invisibleAll();
 
+        engTrans.setEditable(false);
+        vieTrans.setEditable(false);
         translateField.setVisible(true);
+        translatePane.setVisible(true);
         isTranslate = true;
     }
 
@@ -537,7 +552,9 @@ public class JFlatController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initWordsList();
         initTerminal();
+        getRandomDef();
         switchUI(isDark);
+
         try {
             tts.mp3("en-US", "Welcome to JFlat!");
         } catch (Exception e) {
@@ -547,7 +564,6 @@ public class JFlatController implements Initializable {
         MediaPlayer mediaPlayer = new MediaPlayer(output);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
-        getRandomDef();
     }
 
 

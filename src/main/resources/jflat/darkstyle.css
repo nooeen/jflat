@@ -111,6 +111,10 @@
     -fx-background-color: transparent;
 }
 
+#translatePane {
+    -fx-text-fill: white;
+}
+
 .wordsListView {
     -fx-font-smoothing-type: lcd;
     -fx-background-radius: 20;

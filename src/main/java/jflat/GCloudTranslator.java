@@ -10,18 +10,16 @@ import java.io.IOException;
 
 public class GCloudTranslator {
 
-    public static void translateText(String _lang, String _text) throws IOException {
+    public static String translateText(String _lang, String _text) throws IOException {
         String projectId = "jflat-185";
         // Supported Languages: https://cloud.google.com/translate/docs/languages
-        String targetLanguage = _lang;
-        String text = _text;
-        translateText(projectId, targetLanguage, text);
+        return translateText(projectId, _lang, _text);
     }
 
     // Translating Text
-    public static void translateText(String projectId, String targetLanguage, String text)
+    public static String translateText(String projectId, String targetLanguage, String text)
             throws IOException {
-
+        String res = "";
         // Initialize client that will be used to send requests. This client only needs to be created
         // once, and can be reused for multiple requests. After completing all of your requests, call
         // the "close" method on the client to safely clean up any remaining background resources.
@@ -44,8 +42,10 @@ public class GCloudTranslator {
 
             // Display the translation for each input text provided
             for (Translation translation : response.getTranslationsList()) {
-                System.out.printf("Translated text: %s\n", translation.getTranslatedText());
+                //System.out.printf("Translated text: %s\n", translation.getTranslatedText());
+                res = translation.getTranslatedText();
             }
         }
+        return res;
     }
 }

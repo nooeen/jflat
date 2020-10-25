@@ -5,6 +5,14 @@
     -fx-background-radius: 30 30 30 30;
 }
 
+.tab-pane {
+    -fx-tab-max-height: 0 ;
+}
+.tab-pane .tab-header-area {
+    visibility: hidden ;
+    -fx-padding: -20 0 0 0;
+}
+
 .button {
     -fx-border-color: transparent;
     -fx-border-width: 0;
@@ -55,10 +63,18 @@
 }
 
 #addUpdatePane .button{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-family: 'Montserrat', sans-serif;
-    -fx-font-weight: 700;
-    -fx-font-size: 16;
+    -fx-font-weight: 100;
+    -fx-font-size: 13;
+}
+
+#terminalPane .tab-pane .tab {
+    -fx-background-color: transparent;
+}
+
+.transHeadline {
+    -fx-text-fill: black;
 }
 
 .wordsListView {
