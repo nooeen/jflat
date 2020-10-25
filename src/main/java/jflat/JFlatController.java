@@ -77,9 +77,9 @@ public class JFlatController implements Initializable {
     @FXML
     public TextArea vieTrans;
     @FXML
-    public Text engTransText;
+    public Button engTransText;
     @FXML
-    public Text vieTransText;
+    public Button vieTransText;
     @FXML
     public Button favBTN;
     @FXML
@@ -127,7 +127,11 @@ public class JFlatController implements Initializable {
 
     public void invisibleAll() {
         autoCompleteField.setVisible(false);
+        autoCompleteField.setEditable(false);
+        autoCompleteField.setDisable(true);
         translateField.setVisible(false);
+        translateField.setEditable(false);
+        translateField.setDisable(true);
         listPane.setVisible(false);
         webPane.setVisible(false);
         settingsPane.setVisible(false);
@@ -224,7 +228,9 @@ public class JFlatController implements Initializable {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         }
         if (isTranslate) {
-            defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
+            defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
+            System.out.println(dictDB.getEngDef(selectedWord));
+            return;
         }
         if (isFav) {
             defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
@@ -402,18 +408,21 @@ public class JFlatController implements Initializable {
     }
 
     public void handleFavBTN() {
+        dictDB.listFav(favWords);
         if (!isFav) {
             String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
             StringBuilder sb = new StringBuilder(selectedWord);
             sb.deleteCharAt(0);
             sb.deleteCharAt(sb.length() - 1);
             selectedWord = sb.toString();
-            System.out.println(selectedWord);
             String lang = "av";
             if (!isAV) {
                 lang = "va";
             }
-            dictDB.addFavWord(selectedWord, lang);
+            if(!favWords.contains(selectedWord)) {
+                dictDB.addFavWord(selectedWord, lang);
+                favWords.add(selectedWord);
+            }
         }
     }
 
@@ -456,6 +465,9 @@ public class JFlatController implements Initializable {
 
         engTrans.setText(GCloudEng);
         vieTrans.setText(GCloudVie);
+
+        defView.getEngine().loadContent(dictDB.getEngDef(translateField.getText()), "text/html");
+        webPane.setVisible(true);
     }
 
     public void switchUI(boolean isDark) {
@@ -476,6 +488,8 @@ public class JFlatController implements Initializable {
             invisibleAll();
             autoCompleteField.setVisible(true);
             autoCompleteField.setPromptText("Search...");
+            autoCompleteField.setEditable(true);
+            autoCompleteField.setDisable(false);
             webPane.setVisible(true);
             listPane.setVisible(true);
             isHome = true;
@@ -495,6 +509,8 @@ public class JFlatController implements Initializable {
         ttsBTN.setVisible(false);
         autoCompleteField.setVisible(true);
         autoCompleteField.setPromptText("Search...");
+        autoCompleteField.setEditable(true);
+        autoCompleteField.setDisable(false);
         webPane.setVisible(true);
         listPane.setVisible(true);
 
@@ -512,6 +528,8 @@ public class JFlatController implements Initializable {
         ttsBTN.setVisible(false);
         autoCompleteField.setVisible(true);
         autoCompleteField.setPromptText("Search...");
+        autoCompleteField.setEditable(true);
+        autoCompleteField.setDisable(false);
         webPane.setVisible(true);
         listPane.setVisible(true);
 
@@ -526,6 +544,8 @@ public class JFlatController implements Initializable {
         vieTrans.setEditable(false);
         translateField.setVisible(true);
         translatePane.setVisible(true);
+        translateField.setEditable(true);
+        translateField.setDisable(false);
         isTranslate = true;
     }
 

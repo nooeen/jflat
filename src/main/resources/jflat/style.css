@@ -78,6 +78,25 @@
     -fx-background-color: transparent;
 }
 
+#engTransText, #vieTransText{
+    -fx-text-fill: black;
+}
+
+.text-area {
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
 .transHeadline {
     -fx-text-fill: black;
 }

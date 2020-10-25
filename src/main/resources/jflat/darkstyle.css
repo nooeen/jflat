@@ -115,6 +115,21 @@
     -fx-text-fill: white;
 }
 
+.text-area {
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
 .wordsListView {
     -fx-font-smoothing-type: lcd;
     -fx-background-radius: 20;

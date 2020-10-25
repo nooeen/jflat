@@ -157,7 +157,7 @@ public class Database {
         String sql = "INSERT INTO fav SELECT * FROM " + lang + " WHERE word LIKE " + "'" + selectedWord + "'";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();) {
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

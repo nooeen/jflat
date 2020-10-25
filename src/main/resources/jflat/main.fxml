@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.web.HTMLEditor?>
 <?import javafx.scene.web.WebView?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -16,7 +15,7 @@
 <AnchorPane fx:id="dynamicPane" prefHeight="590.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jflat.JFlatController">
    <children>
       <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Search..." />
-      <TextField fx:id="translateField" layoutX="222.0" layoutY="12.0" onAction="#handleTranslateField" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Translate..." visible="false" />
+      <TextField fx:id="translateField" layoutX="222.0" layoutY="12.0" onAction="#handleTranslateField" prefHeight="27.0" prefWidth="584.0" promptText="Translate..." visible="false" />
       <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="567.0" prefWidth="198.0">
          <children>
             <Button fx:id="homeMenuBTN" layoutX="26.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleHomeMenuBTN" text="Home" textFill="WHITE">
@@ -129,7 +128,7 @@
                   <FontIcon iconLiteral="ion4-ios-arrow-back" iconSize="16" />
                </graphic>
             </Button>
-            <TextField fx:id="addUpdateField" layoutY="7.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="723.0" promptText="Word..." />
+            <TextField fx:id="addUpdateField" layoutY="7.0" prefHeight="27.0" prefWidth="723.0" promptText="Word..." />
             <HTMLEditor fx:id="addUpdateEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutY="53.0" prefHeight="435.0" prefWidth="723.0" />
          </children>
       </AnchorPane>
@@ -152,17 +151,17 @@
       <AnchorPane fx:id="translatePane" layoutX="222.0" layoutY="49.0" prefHeight="494.0" prefWidth="241.0" visible="false">
          <children>
             <TextArea fx:id="engTrans" layoutX="1.0" layoutY="196.0" prefHeight="15.0" prefWidth="240.0" />
-            <Text fx:id="engTransText" fill="WHITE" layoutX="1.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="transHeadline" text="English" wrappingWidth="117.5">
+            <Button fx:id="engTransText" layoutX="-10.0" layoutY="169.0" mnemonicParsing="false" text="English" textFill="WHITE">
                <font>
-                  <Font name="Montserrat SemiBold" size="24.0" />
+                  <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
+            </Button>
             <TextArea fx:id="vieTrans" layoutX="1.0" layoutY="287.0" prefHeight="15.0" prefWidth="240.0" />
-            <Text fx:id="vieTransText" fill="WHITE" layoutX="1.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="transHeadline" text="Vietnamese" wrappingWidth="162.5">
+            <Button fx:id="vieTransText" layoutX="-10.0" layoutY="260.0" mnemonicParsing="false" text="Vietnamese" textFill="WHITE">
                <font>
-                  <Font name="Montserrat SemiBold" size="24.0" />
+                  <Font name="Montserrat SemiBold" size="16.0" />
                </font>
-            </Text>
+            </Button>
          </children>
       </AnchorPane>
    </children>
