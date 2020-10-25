@@ -1,5 +1,8 @@
 package jflat;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,12 +12,11 @@ public class TrieNode {
     // TrieNode[] children;
     Map<Character, TrieNode> children;
     boolean isWord;
-    List<String> words;
+    ObservableList<String> words;
 
     public TrieNode() {
-        // children = new TrieNode[143859];
         children = new HashMap<>();
         isWord = false;
-        words = new ArrayList<>();
+        words = FXCollections.observableArrayList();
     }
 }

@@ -1,5 +1,8 @@
 package jflat;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 
 public class Trie {
@@ -30,10 +33,7 @@ public class Trie {
      */
     public void insert(String word) {
         TrieNode cur = root;
-        for (char c : word.toCharArray()) { // apple
-            // if (cur.children[c] == null) {
-            //     cur.children[c] = new TrieNode();
-            // }
+        for (char c : word.toCharArray()) {
             if (!cur.children.containsKey(c)) {
                 cur.children.put(c, new TrieNode());
             }
@@ -72,10 +72,6 @@ public class Trie {
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            // if(cur.children[c] == null ) {
-            //     return false;
-            // }
-            // cur = cur.children[c];
             if(!cur.children.containsKey(c)) {
                 return false;
             }
@@ -85,19 +81,15 @@ public class Trie {
         return true;
     }
 
-    public List<String> findWords(String prefix) {
+    public ObservableList<String> findWords(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
-            // if(cur.children[c] == null ) {
-            //     return new ArrayList<>(); // empty list
-            // }
-            // cur = cur.children[c];
-
             if(!cur.children.containsKey(c)) {
-                return new ArrayList<>();
+                return FXCollections.observableArrayList();
             }
             cur = cur.children.get(c);
         }
+
 
         return cur.words; // list of words at that node
     }
