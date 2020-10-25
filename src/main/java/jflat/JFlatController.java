@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class JFlatController implements Initializable {
@@ -109,6 +110,7 @@ public class JFlatController implements Initializable {
     @FXML
     public Button settingsMenuBTN;
 
+    @FXML
     public void statusReset() {
         isHome = false;
         isFav = false;
@@ -119,6 +121,7 @@ public class JFlatController implements Initializable {
         isAddUpdate = false;
     }
 
+    @FXML
     public void invisibleAll() {
         autoCompleteField.setVisible(false);
         translateField.setVisible(false);
@@ -130,6 +133,7 @@ public class JFlatController implements Initializable {
         terminalPane.setVisible(false);
     }
 
+    @FXML
     public void initTerminal() {
         terminalPane.setVisible(false);
         TerminalConfig config = new TerminalConfig();
@@ -148,6 +152,25 @@ public class JFlatController implements Initializable {
             dictDB.listVA(words);
         }
         wordsList.setItems(words);
+    }
+
+    @FXML
+    public void getRandomDef() {
+        ttsBTN.setVisible(true);
+        if (isDark) {
+            defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
+        }
+        Random rand = new Random();
+        String selectedWord = words.get(rand.nextInt(words.size()));
+
+        if(!historyWords.contains(selectedWord)) {
+            historyWords.add(selectedWord);
+        }
+        defView.getEngine().loadContent(dictDB.getEngDef(selectedWord)
+                        + "<p></p>"
+                        + "<p style=\"text-align: center; \">~Word Of The Day~</p>", "text/html");
+        System.out.println(selectedWord);
+        System.gc();
     }
 
     @FXML
@@ -281,12 +304,16 @@ public class JFlatController implements Initializable {
         isAddUpdate = true;
         if (isFav) {
             addUpdateEditor.setHtmlText(dictDB.getFavDef(selectedWord));
+            dictDB.deleteFavWord(selectedWord);
         }
         if (isAV) {
             addUpdateEditor.setHtmlText(dictDB.getEngDef(selectedWord));
+            dictDB.deleteEngWord(selectedWord);
         } else {
             addUpdateEditor.setHtmlText(dictDB.getVieDef(selectedWord));
+            dictDB.deleteVieWord(selectedWord);
         }
+
     }
 
     @FXML
@@ -520,6 +547,7 @@ public class JFlatController implements Initializable {
         MediaPlayer mediaPlayer = new MediaPlayer(output);
         mediaPlayer.seek(mediaPlayer.getStartTime());
         mediaPlayer.play();
+        getRandomDef();
     }
 
 

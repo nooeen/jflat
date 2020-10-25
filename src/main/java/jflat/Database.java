@@ -11,6 +11,7 @@ public class Database {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
         return conn;
     }
@@ -203,5 +204,20 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public String getRandomWord() {
+        String res = "";
+        String sql = "SELECT word FROM av ORDER BY RANDOM() LIMIT 1;";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                res = rs.getString("html");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return res;
     }
 }

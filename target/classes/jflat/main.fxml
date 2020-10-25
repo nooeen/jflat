@@ -15,21 +15,6 @@
    <children>
       <TextField fx:id="autoCompleteField" layoutX="222.0" layoutY="12.0" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Search..." />
       <TextField fx:id="translateField" layoutX="222.0" layoutY="12.0" onAction="#handleTranslateField" onKeyTyped="#autoCompleteListener" prefHeight="27.0" prefWidth="584.0" promptText="Translate..." visible="false" />
-      <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
-         <graphic>
-            <FontIcon iconLiteral="mdi-close" iconSize="15" />
-         </graphic>
-      </Button>
-      <Button fx:id="maximizeBTN" layoutX="869.0" layoutY="13.0" mnemonicParsing="false">
-         <graphic>
-            <FontIcon iconLiteral="mdi-window-maximize" iconSize="15" />
-         </graphic>
-      </Button>
-      <Button fx:id="minimizeBTN" layoutX="825.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleMinimizeBTN">
-         <graphic>
-            <FontIcon iconLiteral="mdi-window-minimize" iconSize="15" />
-         </graphic>
-      </Button>
       <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="12.0" prefHeight="567.0" prefWidth="198.0">
          <children>
             <Button fx:id="homeMenuBTN" layoutX="26.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleHomeMenuBTN" text="Home" textFill="WHITE">
@@ -147,6 +132,21 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="translatePane" layoutX="222.0" layoutY="49.0" prefHeight="524.0" prefWidth="723.0" visible="false" />
-      <TabPane fx:id="terminalPane" layoutX="222.0" layoutY="49.0" prefHeight="524.0" prefWidth="723.0" tabClosingPolicy="UNAVAILABLE" />
+      <TabPane fx:id="terminalPane" layoutX="222.0" layoutY="13.0" prefHeight="524.0" prefWidth="723.0" tabClosingPolicy="UNAVAILABLE" visible="false" />
+      <Button fx:id="closeBTN" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCloseBTN">
+         <graphic>
+            <FontIcon iconLiteral="mdi-close" iconSize="15" />
+         </graphic>
+      </Button>
+      <Button fx:id="maximizeBTN" layoutX="869.0" layoutY="13.0" mnemonicParsing="false">
+         <graphic>
+            <FontIcon iconLiteral="mdi-window-maximize" iconSize="15" />
+         </graphic>
+      </Button>
+      <Button fx:id="minimizeBTN" layoutX="825.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleMinimizeBTN">
+         <graphic>
+            <FontIcon iconLiteral="mdi-window-minimize" iconSize="15" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
