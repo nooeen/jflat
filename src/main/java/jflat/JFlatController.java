@@ -3,8 +3,6 @@ package jflat;
 import com.kodedu.terminalfx.TerminalBuilder;
 import com.kodedu.terminalfx.TerminalTab;
 import com.kodedu.terminalfx.config.TerminalConfig;
-import io.github.firemaples.language.Language;
-import io.github.firemaples.translate.Translate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +19,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -465,7 +462,7 @@ public class JFlatController implements Initializable {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
         } else {
-
+            defView.getEngine().setUserStyleSheetLocation(getClass().getResource("webview.css").toString());
         }
         initTerminal();
     }
