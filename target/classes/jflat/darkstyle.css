@@ -35,6 +35,25 @@
     -fx-text-fill: white;
 }
 
+#engTransText, #vieTransText{
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
+}
+
+#settingsPane .button {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+    -fx-background-color: rgb(47,48,48);
+    -fx-font-weight: 900;
+    -fx-font-size: 24;
+}
+
+#settingsPane .button:hover {
+    -fx-background-color: rgb(27,27,27);
+}
+
 #terminalPane .tab-pane .tab {
     -fx-background-color: transparent;
 }

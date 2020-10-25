@@ -29,6 +29,17 @@
     -fx-text-fill: white;
 }
 
+#settingsPane .button {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+#settingsPane .button:hover {
+    -fx-background-color: rgb(47,48,48);
+}
+
 #menuPane {
     -fx-background-color: linear-gradient(to top, #a1c4fd, #c2e9fb);
     -fx-border-radius: 30 30 30 30;

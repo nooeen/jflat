@@ -8,12 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -44,6 +44,8 @@ public class JFlatController implements Initializable {
     public boolean isSettings = false;
     public boolean isAddUpdate = false;
 
+    @FXML
+    public Scene mainScene;
     @FXML
     public AnchorPane dynamicPane;
     @FXML
@@ -76,6 +78,10 @@ public class JFlatController implements Initializable {
     public TextArea engTrans;
     @FXML
     public TextArea vieTrans;
+    @FXML
+    public Button UIButton;
+    @FXML
+    public Button TrieSQLButton;
     @FXML
     public Button engTransText;
     @FXML
@@ -141,10 +147,11 @@ public class JFlatController implements Initializable {
     }
 
     public void initTerminal() {
+        terminalPane.getTabs().clear();
         terminalPane.setVisible(false);
         TerminalConfig config = new TerminalConfig();
-        if(isDark) {
-            config.setBackgroundColor(Color.rgb(29,29,29));
+        if (isDark) {
+            config.setBackgroundColor(Color.rgb(29, 29, 29));
             config.setForegroundColor(Color.WHITE);
         } else {
             config.setBackgroundColor(Color.WHITE);
@@ -175,12 +182,12 @@ public class JFlatController implements Initializable {
         String selectedWord = words.get(rand.nextInt(words.size()));
         wordsList.getSelectionModel().select(selectedWord);
 
-        if(!historyWords.contains(selectedWord)) {
+        if (!historyWords.contains(selectedWord)) {
             historyWords.add(selectedWord);
         }
         defView.getEngine().loadContent(dictDB.getEngDef(selectedWord)
-                        + "<p></p>"
-                        + "<p style=\"text-align: center; \">~Word Of The Day~</p>", "text/html");
+                + "<p></p>"
+                + "<p style=\"text-align: center; \">~Word Of The Day~</p>", "text/html");
         System.gc();
     }
 
@@ -199,12 +206,12 @@ public class JFlatController implements Initializable {
 
         if (isFav) {
             defView.getEngine().loadContent(dictDB.getFavDef(selectedWord), "text/html");
-            if(!historyWords.contains(selectedWord)) {
+            if (!historyWords.contains(selectedWord)) {
                 historyWords.add(selectedWord);
             }
             return;
         } else if (isHistory) {
-            if(!dictDB.getEngDef(selectedWord).equals("")) {
+            if (!dictDB.getEngDef(selectedWord).equals("")) {
                 defView.getEngine().loadContent(dictDB.getEngDef(selectedWord), "text/html");
             } else {
                 defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
@@ -217,7 +224,7 @@ public class JFlatController implements Initializable {
         } else {
             defView.getEngine().loadContent(dictDB.getVieDef(selectedWord), "text/html");
         }
-        if(!historyWords.contains(selectedWord)) {
+        if (!historyWords.contains(selectedWord)) {
             historyWords.add(selectedWord);
         }
         System.gc();
@@ -258,7 +265,7 @@ public class JFlatController implements Initializable {
     }
 
     public void addWord() {
-        if(isFav) {
+        if (isFav) {
             statusReset();
             isFav = true;
         } else {
@@ -358,7 +365,7 @@ public class JFlatController implements Initializable {
     }
 
     public void autoCompleteListener() {
-        if(isFav) {
+        if (isFav) {
             dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
             String selectedWord = "";
             if (!favWords.isEmpty()) {
@@ -407,6 +414,23 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    public void handleUISwitch() {
+        mainScene = UIButton.getScene();
+        isDark = !isDark;
+        if (isDark) {
+            mainScene.getStylesheets().remove(getClass().getResource("style.css").toExternalForm());
+            mainScene.getStylesheets().add(getClass().getResource("darkstyle.css").toExternalForm());
+        } else {
+            mainScene.getStylesheets().remove(getClass().getResource("darkstyle.css").toExternalForm());
+            mainScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        }
+        switchUI(isDark);
+    }
+
+    public void handleTrieSQLSwitch() {
+
+    }
+
     public void handleFavBTN() {
         dictDB.listFav(favWords);
         if (!isFav) {
@@ -419,7 +443,7 @@ public class JFlatController implements Initializable {
             if (!isAV) {
                 lang = "va";
             }
-            if(!favWords.contains(selectedWord)) {
+            if (!favWords.contains(selectedWord)) {
                 dictDB.addFavWord(selectedWord, lang);
                 favWords.add(selectedWord);
             }
@@ -437,7 +461,7 @@ public class JFlatController implements Initializable {
     }
 
     public void handleBackBTNOfHTMLEditor() {
-        if(isFav) {
+        if (isFav) {
             handleFavoriteMenuBTN();
             return;
         }
@@ -448,9 +472,9 @@ public class JFlatController implements Initializable {
         String word = addUpdateField.getText();
         String html = addUpdateEditor.getHtmlText();
         String type;
-        if(isFav) {
+        if (isFav) {
             type = "fav";
-        } else if(isAV) {
+        } else if (isAV) {
             type = "av";
         } else {
             type = "va";
@@ -468,6 +492,10 @@ public class JFlatController implements Initializable {
 
         defView.getEngine().loadContent(dictDB.getEngDef(translateField.getText()), "text/html");
         webPane.setVisible(true);
+
+        if (!historyWords.contains(GCloudEng)) {
+            historyWords.add(GCloudEng);
+        }
     }
 
     public void switchUI(boolean isDark) {
