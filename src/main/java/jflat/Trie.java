@@ -21,13 +21,16 @@ public class Trie {
 
     TrieNode root;
 
+    /**
+     * initialize Trie root
+     */
     public Trie() {
         root = new TrieNode();
     }
 
     /**
-     * Inserts a word into the trie.
-     * @param word inserted word
+     * insert words into Trie
+     * @param word  inserted words
      */
     public void insert(String word) {
         TrieNode cur = root;
@@ -35,7 +38,6 @@ public class Trie {
             if (!cur.children.containsKey(c)) {
                 cur.children.put(c, new TrieNode());
             }
-            // cur = cur.children[c];
             cur = cur.children.get(c);
             cur.words.add(word);
         }
@@ -43,17 +45,13 @@ public class Trie {
     }
 
     /**
-     * Returns if the word is in the trie.
-     * @param word word
-     * @return if the word is in the trie
+     * return if the words is in Trie
+     * @param word the word need to search for
+     * @return isWord to check true or false
      */
     public boolean search(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            // if(cur.children[c] == null) {
-            //     return false;
-            // }
-            // cur = cur.children[c];
             if(!cur.children.containsKey(c)) {
                 return false;
             }
@@ -64,8 +62,8 @@ public class Trie {
 
     /**
      * Returns if there is any word in the trie that starts with the given prefix.
-     * @param prefix word's prefix
-     * @return words with the given prefix
+     * @param prefix the prefix of words
+     * @return if there is any word in the trie that starts with the given prefix.
      */
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
@@ -79,6 +77,11 @@ public class Trie {
         return true;
     }
 
+    /**
+     * find all words started with the given prefix.
+     * @param prefix prefix of the words need to find
+     * @return list of words start with the given prefix
+     */
     public ObservableList<String> findWords(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
@@ -87,56 +90,6 @@ public class Trie {
             }
             cur = cur.children.get(c);
         }
-
         return cur.words;
     }
 }
-
-/*
-apple, app, atom
-a: [apple, app, atom]
-ap: [apple, app]
-app: [apple, app]
-appl: [apple]
-appple: [apple]
-at: [atom]
-ato: [atom]
-atom: [atom]
-search (read):
-- Trie: O(len(prefix))
-- Hash Map: average O(1)
-insert (write):
-- Trie faster than Hash Map
-memory used:
-- trie more efficient
-trie = new Trie()
-dictionary = new HashMap()
-main() {
-  populateSearchData()
-  populateTranslationData()
-}
-populateTranslationData() {
-  for (englishword, vietnamword : words) {
-    dictionary.put(englishword, vietnamword)
-  }
-}
-populateSearchData() {
-  words = openfile("words.txt")
-  for (EnglishWord : words) {
-    trie.insert(EnglishWord)
-  }
-  for (word : words) {
-    for (prefix : word) {
-      if !map.containsKey(prefix)
-        map.put(prefix, new...)
-      map.get(prefix).add(word);
-    }
-  }
-}
-translate(EnglishWord) {
-  return dictionary.get(EnglishWord)
-}
-autocompleteSearch(prefix) {
-  return trie.findWords(prefix);
-  return map.get(prefix);
-}*/
