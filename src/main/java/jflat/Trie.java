@@ -3,8 +3,6 @@ package jflat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.*;
-
 public class Trie {
     public static void main(String[] args) {
         Trie trie = new Trie();

@@ -31,6 +31,7 @@ public class JFlatController implements Initializable {
     public ObservableList<String> words = FXCollections.observableArrayList();
     public ObservableList<String> favWords = FXCollections.observableArrayList();
     public ObservableList<String> historyWords = FXCollections.observableArrayList();
+    public Trie trie = new Trie();
 
     public boolean isDark = false;
 
@@ -43,6 +44,7 @@ public class JFlatController implements Initializable {
     public boolean isTerminal = false;
     public boolean isSettings = false;
     public boolean isAddUpdate = false;
+    public boolean isTrie = false;
 
     @FXML
     public Scene mainScene;
@@ -255,10 +257,22 @@ public class JFlatController implements Initializable {
         if (isAV) {
             dictDB.listVA(words);
             wordsList.setItems(words);
+            if(isTrie) {
+                trie = new Trie();
+                for(String c : words) {
+                    trie.insert(c);
+                }
+            }
             isAV = false;
         } else {
             dictDB.listAV(words);
             wordsList.setItems(words);
+            if(isTrie) {
+                trie = new Trie();
+                for(String c : words) {
+                    trie.insert(c);
+                }
+            }
             isAV = true;
         }
         System.gc();
@@ -366,7 +380,11 @@ public class JFlatController implements Initializable {
 
     public void autoCompleteListener() {
         if (isFav) {
-            dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
+            if (!isTrie) {
+                dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
+            } else {
+                favWords = trie.findWords(autoCompleteField.getText());
+            }
             String selectedWord = "";
             if (!favWords.isEmpty()) {
                 selectedWord = words.get(0);
@@ -375,14 +393,22 @@ public class JFlatController implements Initializable {
             return;
         }
         if (isAV) {
-            dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
+            if (!isTrie) {
+                dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
+            } else {
+                words = trie.findWords(autoCompleteField.getText());
+            }
             String selectedWord = "";
             if (!words.isEmpty()) {
                 selectedWord = words.get(0);
             }
             getSelectedWordDef(selectedWord);
         } else {
-            dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
+            if (!isTrie) {
+                dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
+            } else {
+                words = trie.findWords(autoCompleteField.getText());
+            }
             String selectedWord = "";
             if (!words.isEmpty()) {
                 selectedWord = words.get(0);
@@ -428,7 +454,19 @@ public class JFlatController implements Initializable {
     }
 
     public void handleTrieSQLSwitch() {
-
+        isTrie = !isTrie;
+        if (isTrie) {
+            if (isFav) {
+                for (String c : favWords) {
+                    trie.insert(c);
+                }
+            } else {
+                for (String c : words) {
+                    trie.insert(c);
+                }
+            }
+        }
+        System.out.println(isTrie);
     }
 
     public void handleFavBTN() {
