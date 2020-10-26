@@ -19,7 +19,7 @@ public class Database {
     public void listAV(ObservableList<String> words) {
         words.clear();
 
-        String sql = "SELECT word FROM " + "av";
+        String sql = "SELECT word FROM " + "av" + " ORDER BY word ASC";
 
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
@@ -35,7 +35,7 @@ public class Database {
     public void listVA(ObservableList<String> words) {
         words.clear();
 
-        String sql = "SELECT word FROM " + "va";
+        String sql = "SELECT word FROM " + "va" + " ORDER BY word ASC";
 
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
@@ -51,7 +51,7 @@ public class Database {
     public void listFav(ObservableList<String> favWords) {
         favWords.clear();
 
-        String sql = "SELECT word FROM " + "fav";
+        String sql = "SELECT word FROM " + "fav" + " ORDER BY word ASC";
 
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
