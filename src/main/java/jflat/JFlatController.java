@@ -123,6 +123,9 @@ public class JFlatController implements Initializable {
     @FXML
     public Button settingsMenuBTN;
 
+    /**
+     * menu check
+     */
     public void statusReset() {
         isHome = false;
         isFav = false;
@@ -133,6 +136,9 @@ public class JFlatController implements Initializable {
         isAddUpdate = false;
     }
 
+    /**
+     * made invisible all anchor pane
+     */
     public void invisibleAll() {
         autoCompleteField.setVisible(false);
         autoCompleteField.setEditable(false);
@@ -148,6 +154,9 @@ public class JFlatController implements Initializable {
         terminalPane.setVisible(false);
     }
 
+    /**
+     * initialize terminal for commandline version
+     */
     public void initTerminal() {
         terminalPane.getTabs().clear();
         terminalPane.setVisible(false);
@@ -165,6 +174,9 @@ public class JFlatController implements Initializable {
         terminalPane.getTabs().add(terminal);
     }
 
+    /**
+     * initialize list of words
+     */
     public void initWordsList() {
         if (isAV) {
             dictDB.listAV(words);
@@ -174,6 +186,9 @@ public class JFlatController implements Initializable {
         wordsList.setItems(words);
     }
 
+    /**
+     * get definition for random word of the day
+     */
     public void getRandomDef() {
         ttsBTN.setVisible(true);
         if (isDark) {
@@ -193,6 +208,9 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * get word's definition from list
+     */
     public void getWordDef() {
         ttsBTN.setVisible(true);
 
@@ -232,6 +250,10 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * get selected word's definition.
+     * @param selectedWord selected word
+     */
     public void getSelectedWordDef(String selectedWord) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -253,6 +275,9 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * switch form av dictionary to va dictionary
+     */
     public void switchDict() {
         if (isAV) {
             dictDB.listVA(words);
@@ -272,6 +297,9 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * add word to the dictionary
+     */
     public void addWord() {
         if (isFav) {
             statusReset();
@@ -315,6 +343,9 @@ public class JFlatController implements Initializable {
         isAddUpdate = true;
     }
 
+    /**
+     * update word's definition
+     */
     public void updateWord() {
         statusReset();
         invisibleAll();
@@ -343,6 +374,9 @@ public class JFlatController implements Initializable {
 
     }
 
+    /**
+     * delete word
+     */
     public void deleteWord() {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
         StringBuilder sb = new StringBuilder(selectedWord);
@@ -372,6 +406,9 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * update the list whenever user input to autocomplete text field
+     */
     public void autoCompleteListener() {
         if (isFav) {
             if (!isTrie) {
@@ -415,6 +452,10 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * text to speech.
+     * @throws Exception exception
+     */
     public void ttsPlay() throws Exception {
         String selectedWord = wordsList.getSelectionModel().getSelectedItems().toString();
         StringBuilder sb = new StringBuilder(selectedWord);
@@ -437,6 +478,9 @@ public class JFlatController implements Initializable {
         System.gc();
     }
 
+    /**
+     * dark mode
+     */
     public void handleUISwitch() {
         mainScene = UIButton.getScene();
         isDark = !isDark;
@@ -450,11 +494,17 @@ public class JFlatController implements Initializable {
         switchUI(isDark);
     }
 
+    /**
+     * switch to trie algorithm
+     */
     public void handleTrieSQLSwitch() {
         isTrie = !isTrie;
         System.out.println(isTrie);
     }
 
+    /**
+     * favourite button
+     */
     public void handleFavBTN() {
         dictDB.listFav(favWords);
         if (!isFav) {
@@ -474,16 +524,27 @@ public class JFlatController implements Initializable {
         }
     }
 
+    /**
+     * custom off button
+     * @param event user input
+     */
     public void handleCloseBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * custom minimize button
+     * @param event user input
+     */
     public void handleMinimizeBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
+    /**
+     * back button of html editor
+     */
     public void handleBackBTNOfHTMLEditor() {
         if (isFav) {
             handleFavoriteMenuBTN();
@@ -492,6 +553,9 @@ public class JFlatController implements Initializable {
         handleHomeMenuBTN();
     }
 
+    /**
+     * save button of html editor
+     */
     public void handleSaveBTNOfHTMLEditor() {
         String word = addUpdateField.getText();
         String html = addUpdateEditor.getHtmlText();
@@ -507,6 +571,10 @@ public class JFlatController implements Initializable {
         handleBackBTNOfHTMLEditor();
     }
 
+    /**
+     * translate of google api
+     * @throws Exception exception
+     */
     public void handleTranslateField() throws Exception {
         String GCloudEng = GCloudTranslator.translateText("en-US", translateField.getText());
         String GCloudVie = GCloudTranslator.translateText("vi-vn", translateField.getText());
@@ -522,6 +590,9 @@ public class JFlatController implements Initializable {
         }
     }
 
+    /**
+     * @param isDark switch to dark mode
+     */
     public void switchUI(boolean isDark) {
         if (isDark) {
             defView.getEngine().setUserStyleSheetLocation(getClass().getResource("darkwebview.css").toString());
@@ -531,6 +602,9 @@ public class JFlatController implements Initializable {
         initTerminal();
     }
 
+    /**
+     * home menu button
+     */
     public void handleHomeMenuBTN() {
         statusReset();
         ttsBTN.setVisible(false);
@@ -564,6 +638,9 @@ public class JFlatController implements Initializable {
         initWordsList();
     }
 
+    /**
+     * favourite menu button
+     */
     public void handleFavoriteMenuBTN() {
         statusReset();
         invisibleAll();
@@ -593,6 +670,9 @@ public class JFlatController implements Initializable {
         wordsList.setItems(favWords);
     }
 
+    /**
+     * history menu button
+     */
     public void handleHistoryMenuBTN() {
         statusReset();
         invisibleAll();
@@ -611,6 +691,9 @@ public class JFlatController implements Initializable {
         wordsList.setItems(historyWords);
     }
 
+    /**
+     * translate menu button
+     */
     public void handleTranslateMenuBTN() {
         statusReset();
         invisibleAll();
@@ -624,6 +707,9 @@ public class JFlatController implements Initializable {
         isTranslate = true;
     }
 
+    /**
+     * terminal menu button
+     */
     public void handleTerminalMenuBTN() {
         statusReset();
         invisibleAll();
@@ -632,6 +718,9 @@ public class JFlatController implements Initializable {
         isTerminal = true;
     }
 
+    /**
+     * setting menu button
+     */
     public void handleSettingsMenuBTN() {
         statusReset();
         invisibleAll();

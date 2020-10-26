@@ -14,6 +14,9 @@ public class TrieNode {
     boolean isWord;
     ObservableList<String> words;
 
+    /**
+     * initialize trie node
+     */
     public TrieNode() {
         children = new HashMap<>();
         isWord = false;

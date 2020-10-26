@@ -21,13 +21,16 @@ public class Trie {
 
     TrieNode root;
 
+    /**
+     * initialize Trie root
+     */
     public Trie() {
         root = new TrieNode();
     }
 
     /**
-     * Inserts a word into the trie.
-     * @param word inserted word
+     * insert words into Trie
+     * @param word  inserted words
      */
     public void insert(String word) {
         TrieNode cur = root;
@@ -43,9 +46,9 @@ public class Trie {
     }
 
     /**
-     * Returns if the word is in the trie.
-     * @param word word
-     * @return if the word is in the trie
+     * return if the words is in Trie
+     * @param word the word need to search for
+     * @return isWord to check true or false
      */
     public boolean search(String word) {
         TrieNode cur = root;
@@ -64,8 +67,8 @@ public class Trie {
 
     /**
      * Returns if there is any word in the trie that starts with the given prefix.
-     * @param prefix word's prefix
-     * @return words with the given prefix
+     * @param prefix the prefix of words
+     * @return if there is any word in the trie that starts with the given prefix.
      */
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
@@ -79,6 +82,11 @@ public class Trie {
         return true;
     }
 
+    /**
+     * find all words started with the given prefix.
+     * @param prefix prefix of the words need to find
+     * @return list of words start with the given prefix
+     */
     public ObservableList<String> findWords(String prefix) {
         TrieNode cur = root;
         for(char c : prefix.toCharArray()) {
