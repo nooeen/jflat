@@ -257,25 +257,17 @@ public class JFlatController implements Initializable {
         if (isAV) {
             dictDB.listVA(words);
             wordsList.setItems(words);
-
-            if(isTrie) {
-                trie = new Trie();
-                for(String t : words) {
-                    trie.insert(t);
-                }
-            }
             isAV = false;
         } else {
             dictDB.listAV(words);
             wordsList.setItems(words);
-
-            if(isTrie) {
-                trie = new Trie();
-                for(String t : words) {
-                    trie.insert(t);
-                }
-            }
             isAV = true;
+        }
+        if(isTrie) {
+            trie = new Trie();
+            for(String t : words) {
+                trie.insert(t);
+            }
         }
         System.gc();
     }
@@ -385,23 +377,14 @@ public class JFlatController implements Initializable {
             if (!isTrie) {
                 dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
             } else {
-                System.out.println("a");
                 favWords = trie.findWords(autoCompleteField.getText());
-
-                for(String t : favWords){
-                    System.out.println(t);
-                }
-                System.out.println("b");
-
+                wordsList.setItems(favWords);
             }
-            wordsList.setItems(favWords);
-            wordsList.refresh();
-//            String selectedWord = "";
-//            if (!favWords.isEmpty()) {
-//                selectedWord = words.get(0);
-//            }
-//            getSelectedWordDef(selectedWord);
-            System.out.println("c");
+            String selectedWord = "";
+            if (!favWords.isEmpty()) {
+                selectedWord = words.get(0);
+            }
+            getSelectedWordDef(selectedWord);
             return;
         }
         if (isAV) {
@@ -409,6 +392,7 @@ public class JFlatController implements Initializable {
                 dictDB.listAutoCompleteAV(words, autoCompleteField.getText());
             } else {
                 words = trie.findWords(autoCompleteField.getText());
+                wordsList.setItems(words);
             }
             String selectedWord = "";
             if (!words.isEmpty()) {
@@ -420,6 +404,7 @@ public class JFlatController implements Initializable {
                 dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
             } else {
                 words = trie.findWords(autoCompleteField.getText());
+                wordsList.setItems(words);
             }
             String selectedWord = "";
             if (!words.isEmpty()) {
@@ -566,6 +551,11 @@ public class JFlatController implements Initializable {
 
         if(isTrie){
             trie = new Trie();
+            if(isAV){
+                dictDB.listAV(words);
+            } else {
+                dictDB.listVA(words);
+            }
             for(String t : words){
                 trie.insert(t);
             }

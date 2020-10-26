@@ -88,7 +88,7 @@ public class Trie {
             cur = cur.children.get(c);
         }
 
-        return cur.words; // list of words at that node
+        return cur.words;
     }
 }
 
