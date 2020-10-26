@@ -263,9 +263,9 @@ public class JFlatController implements Initializable {
             wordsList.setItems(words);
             isAV = true;
         }
-        if(isTrie) {
+        if (isTrie) {
             trie = new Trie();
-            for(String t : words) {
+            for (String t : words) {
                 trie.insert(t);
             }
         }
@@ -399,7 +399,7 @@ public class JFlatController implements Initializable {
                 selectedWord = words.get(0);
             }
             getSelectedWordDef(selectedWord);
-        } else {
+        } else if (!isAV) {
             if (!isTrie) {
                 dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
             } else {
@@ -411,6 +411,16 @@ public class JFlatController implements Initializable {
                 selectedWord = words.get(0);
             }
             getSelectedWordDef(selectedWord);
+        }
+        if(isHistory){
+            wordsList.refresh();
+            words = historyWords;
+            words = trie.findWords(autoCompleteField.getText());
+            if(autoCompleteField.getText() == ""){
+                wordsList.setItems(historyWords);
+            } else {
+                wordsList.setItems(words);
+            }
         }
         System.gc();
     }
@@ -477,12 +487,15 @@ public class JFlatController implements Initializable {
     public void handleCloseBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
+        System.exit(0);
     }
 
     public void handleMinimizeBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
+
     }
+
 
     public void handleBackBTNOfHTMLEditor() {
         if (isFav) {
@@ -549,14 +562,14 @@ public class JFlatController implements Initializable {
 
         //chose search method
 
-        if(isTrie){
+        if (isTrie) {
             trie = new Trie();
-            if(isAV){
+            if (isAV) {
                 dictDB.listAV(words);
             } else {
                 dictDB.listVA(words);
             }
-            for(String t : words){
+            for (String t : words) {
                 trie.insert(t);
             }
         }
@@ -580,10 +593,10 @@ public class JFlatController implements Initializable {
         webPane.setVisible(true);
         listPane.setVisible(true);
 
-        if(isTrie){
+        if (isTrie) {
             trie = new Trie();
             dictDB.listFav(favWords);
-            for( String t : favWords){
+            for (String t : favWords) {
                 trie.insert(t);
             }
             System.out.println("trie charged");
@@ -609,6 +622,11 @@ public class JFlatController implements Initializable {
         listPane.setVisible(true);
 
         wordsList.setItems(historyWords);
+        trie = new Trie();
+        for (String t : historyWords) {
+            trie.insert(t);
+        }
+        System.out.println("trie charged");
     }
 
     public void handleTranslateMenuBTN() {
