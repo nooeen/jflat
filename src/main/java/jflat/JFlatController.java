@@ -31,7 +31,7 @@ public class JFlatController implements Initializable {
     public ObservableList<String> words = FXCollections.observableArrayList();
     public ObservableList<String> favWords = FXCollections.observableArrayList();
     public ObservableList<String> historyWords = FXCollections.observableArrayList();
-    public Trie trie = new Trie();
+    public Trie trie;
 
     public boolean isDark = false;
 
@@ -257,20 +257,22 @@ public class JFlatController implements Initializable {
         if (isAV) {
             dictDB.listVA(words);
             wordsList.setItems(words);
+
             if(isTrie) {
                 trie = new Trie();
-                for(String c : words) {
-                    trie.insert(c);
+                for(String t : words) {
+                    trie.insert(t);
                 }
             }
             isAV = false;
         } else {
             dictDB.listAV(words);
             wordsList.setItems(words);
+
             if(isTrie) {
                 trie = new Trie();
-                for(String c : words) {
-                    trie.insert(c);
+                for(String t : words) {
+                    trie.insert(t);
                 }
             }
             isAV = true;
@@ -383,13 +385,23 @@ public class JFlatController implements Initializable {
             if (!isTrie) {
                 dictDB.listAutoCompleteFav(favWords, autoCompleteField.getText());
             } else {
+                System.out.println("a");
                 favWords = trie.findWords(autoCompleteField.getText());
+
+                for(String t : favWords){
+                    System.out.println(t);
+                }
+                System.out.println("b");
+
             }
-            String selectedWord = "";
-            if (!favWords.isEmpty()) {
-                selectedWord = words.get(0);
-            }
-            getSelectedWordDef(selectedWord);
+            wordsList.setItems(favWords);
+            wordsList.refresh();
+//            String selectedWord = "";
+//            if (!favWords.isEmpty()) {
+//                selectedWord = words.get(0);
+//            }
+//            getSelectedWordDef(selectedWord);
+            System.out.println("c");
             return;
         }
         if (isAV) {
@@ -455,17 +467,6 @@ public class JFlatController implements Initializable {
 
     public void handleTrieSQLSwitch() {
         isTrie = !isTrie;
-        if (isTrie) {
-            if (isFav) {
-                for (String c : favWords) {
-                    trie.insert(c);
-                }
-            } else {
-                for (String c : words) {
-                    trie.insert(c);
-                }
-            }
-        }
         System.out.println(isTrie);
     }
 
@@ -561,6 +562,15 @@ public class JFlatController implements Initializable {
             isHome = true;
         }
 
+        //chose search method
+
+        if(isTrie){
+            trie = new Trie();
+            for(String t : words){
+                trie.insert(t);
+            }
+        }
+
         initWordsList();
     }
 
@@ -579,6 +589,15 @@ public class JFlatController implements Initializable {
         autoCompleteField.setDisable(false);
         webPane.setVisible(true);
         listPane.setVisible(true);
+
+        if(isTrie){
+            trie = new Trie();
+            dictDB.listFav(favWords);
+            for( String t : favWords){
+                trie.insert(t);
+            }
+            System.out.println("trie charged");
+        }
 
         dictDB.listFav(favWords);
         wordsList.setItems(favWords);
