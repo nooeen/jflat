@@ -38,7 +38,6 @@ public class Trie {
             if (!cur.children.containsKey(c)) {
                 cur.children.put(c, new TrieNode());
             }
-            // cur = cur.children[c];
             cur = cur.children.get(c);
             cur.words.add(word);
         }
@@ -53,10 +52,6 @@ public class Trie {
     public boolean search(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            // if(cur.children[c] == null) {
-            //     return false;
-            // }
-            // cur = cur.children[c];
             if(!cur.children.containsKey(c)) {
                 return false;
             }
@@ -95,56 +90,6 @@ public class Trie {
             }
             cur = cur.children.get(c);
         }
-
         return cur.words;
     }
 }
-
-/*
-apple, app, atom
-a: [apple, app, atom]
-ap: [apple, app]
-app: [apple, app]
-appl: [apple]
-appple: [apple]
-at: [atom]
-ato: [atom]
-atom: [atom]
-search (read):
-- Trie: O(len(prefix))
-- Hash Map: average O(1)
-insert (write):
-- Trie faster than Hash Map
-memory used:
-- trie more efficient
-trie = new Trie()
-dictionary = new HashMap()
-main() {
-  populateSearchData()
-  populateTranslationData()
-}
-populateTranslationData() {
-  for (englishword, vietnamword : words) {
-    dictionary.put(englishword, vietnamword)
-  }
-}
-populateSearchData() {
-  words = openfile("words.txt")
-  for (EnglishWord : words) {
-    trie.insert(EnglishWord)
-  }
-  for (word : words) {
-    for (prefix : word) {
-      if !map.containsKey(prefix)
-        map.put(prefix, new...)
-      map.get(prefix).add(word);
-    }
-  }
-}
-translate(EnglishWord) {
-  return dictionary.get(EnglishWord)
-}
-autocompleteSearch(prefix) {
-  return trie.findWords(prefix);
-  return map.get(prefix);
-}*/

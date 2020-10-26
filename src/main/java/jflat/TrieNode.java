@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 public class TrieNode {
-    // TrieNode[] children;
     Map<Character, TrieNode> children;
     boolean isWord;
     ObservableList<String> words;
