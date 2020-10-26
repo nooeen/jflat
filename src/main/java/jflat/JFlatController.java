@@ -252,6 +252,7 @@ public class JFlatController implements Initializable {
 
     /**
      * get selected word's definition.
+     *
      * @param selectedWord selected word
      */
     public void getSelectedWordDef(String selectedWord) {
@@ -288,9 +289,9 @@ public class JFlatController implements Initializable {
             wordsList.setItems(words);
             isAV = true;
         }
-        if(isTrie) {
+        if (isTrie) {
             trie = new Trie();
-            for(String t : words) {
+            for (String t : words) {
                 trie.insert(t);
             }
         }
@@ -436,7 +437,7 @@ public class JFlatController implements Initializable {
                 selectedWord = words.get(0);
             }
             getSelectedWordDef(selectedWord);
-        } else {
+        } else if(!isAV) {
             if (!isTrie) {
                 dictDB.listAutoCompleteVA(words, autoCompleteField.getText());
             } else {
@@ -449,11 +450,22 @@ public class JFlatController implements Initializable {
             }
             getSelectedWordDef(selectedWord);
         }
+        if(isHistory){
+            wordsList.refresh();
+            words = historyWords;
+            words = trie.findWords(autoCompleteField.getText());
+            if(autoCompleteField.getText() == ""){
+                wordsList.setItems(historyWords);
+            } else {
+                wordsList.setItems(words);
+            }
+        }
         System.gc();
     }
 
     /**
      * text to speech.
+     *
      * @throws Exception exception
      */
     public void ttsPlay() throws Exception {
@@ -526,15 +538,18 @@ public class JFlatController implements Initializable {
 
     /**
      * custom off button
+     *
      * @param event user input
      */
     public void handleCloseBTN(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
+        System.exit(0);
     }
 
     /**
      * custom minimize button
+     *
      * @param event user input
      */
     public void handleMinimizeBTN(ActionEvent event) {
@@ -573,6 +588,7 @@ public class JFlatController implements Initializable {
 
     /**
      * translate of google api
+     *
      * @throws Exception exception
      */
     public void handleTranslateField() throws Exception {
@@ -623,14 +639,14 @@ public class JFlatController implements Initializable {
 
         //chose search method
 
-        if(isTrie){
+        if (isTrie) {
             trie = new Trie();
-            if(isAV){
+            if (isAV) {
                 dictDB.listAV(words);
             } else {
                 dictDB.listVA(words);
             }
-            for(String t : words){
+            for (String t : words) {
                 trie.insert(t);
             }
         }
@@ -657,10 +673,10 @@ public class JFlatController implements Initializable {
         webPane.setVisible(true);
         listPane.setVisible(true);
 
-        if(isTrie){
+        if (isTrie) {
             trie = new Trie();
             dictDB.listFav(favWords);
-            for( String t : favWords){
+            for (String t : favWords) {
                 trie.insert(t);
             }
             System.out.println("trie charged");
@@ -689,6 +705,11 @@ public class JFlatController implements Initializable {
         listPane.setVisible(true);
 
         wordsList.setItems(historyWords);
+        trie = new Trie();
+        for (String t : historyWords) {
+            trie.insert(t);
+        }
+        System.out.println("trie charged");
     }
 
     /**
