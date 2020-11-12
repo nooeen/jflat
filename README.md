@@ -1,10 +1,15 @@
-<br />
 <p align="center">
-  <h3 align="center">JFlat</h3>
-  <p align="center">
-    Your go-to dictionary, written from scracth with Java!
-  </p>
+  <h1 align="center">JFlat</h1>
+  <p align="center">Your go-to dictionary, written from scracth with Java!</p>
 </p>
+
+## Getting Started
+
+1. Clone the project from "neeooneeoon/JFlat"
+2. Open the project with IntelliJ IDEA & add [OpenJFX's library](https://openjfx.io) to the project
+3. Build the project with IntelliJ IDEA
+4. Add ENVIRONMENT VARIABLE "GOOGLE_APPLICATION_CREDENTIALS" - "api/jflat-185-4a3b4dd23434.json" to JFlat's Run Configuration
+5. Run the app!
 
 ## About The Project
 

@@ -16,27 +16,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-media:win:11.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.openjfx:javafx-controls:win:11.0.2" level="project" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20200518" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okio:okio:2.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: io.github.firemaples:microsoft-translator-java-api:0.8.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20200518" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okio:okio:2.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: io.github.firemaples:microsoft-translator-java-api:0.8.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20200518" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:2.7.5" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okio:okio:2.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.10" level="project" />
-    <orderEntry type="library" name="Maven: io.github.firemaples:microsoft-translator-java-api:0.8.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11.0.2" level="project" />
